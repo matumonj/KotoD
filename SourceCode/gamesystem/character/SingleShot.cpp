@@ -65,7 +65,7 @@ void SingleShot::Draw(DirectXCommon* dxCommon)
 	for (auto i = 0; i < BulSize; i++) {
 		if (BulAlpha[i] <= 0.f)continue;
 		if (!ShotAlive[i])continue;
-		ShotObj[i]->Draw();
+		//ShotObj[i]->Draw();
 	}
 	IKEObject3d::PostDraw();
 
