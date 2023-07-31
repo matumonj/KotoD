@@ -127,7 +127,7 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 	}
 	if (_Tscne == TextScene::TIEYOSHI_EXP ||
 		_Tscne == TextScene::NON) {
-		if (Input::GetInstance()->TriggerButton(Input::A)) {
+		if (Input::GetInstance()->TriggerButton(Input::START)) {
 			_Tscne = TextScene::ENDTEXT;
 		}
 	}
