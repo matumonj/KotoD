@@ -148,7 +148,7 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 		if (enemymanager->BossDestroy()) {
 			Audio::GetInstance()->StopWave(AUDIO_BATTLE);
 			SceneSave::GetInstance()->SetClearFlag(kSecondStage, true);
-			if (camerawork->GetCameraState() == CameraState::CAMERA_BOSSDEAD_AFTER_FIRST) {
+			if (camerawork->GetCameraState() == CameraState::CAMERA_BOSSDEAD_AFTER_SECOND) {
 				PlayPostEffect = false;
 			}
 		}
@@ -198,7 +198,7 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 				loadobj->AllClear();
 				enemymanager->SetDeadThrow(false);
 				enemymanager->DeadUpdate();
-				camerawork->SetCameraState(CAMERA_BOSSDEAD_AFTER_FIRST);
+				camerawork->SetCameraState(CAMERA_BOSSDEAD_AFTER_SECOND);
 				Player::GetInstance()->DeathUpdateAfter(m_DeathTimer);
 			}
 
@@ -284,18 +284,18 @@ void SecondStageActor::BackDraw(DirectXCommon* dxCommon) {
 	IKEObject3d::PreDraw();
 	BackObj::GetInstance()->Draw(dxCommon);
 	if (camerawork->GetCameraState() != CameraState::CAMERA_BOSSAPPEAR &&
-		camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_FIRST) {
-		if (camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_BEFORE && camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_FIRST) {
+		camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_SECOND) {
+		if (camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_BEFORE && camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_SECOND) {
 			ParticleEmitter::GetInstance()->BackDrawAll();
 		}
 	}
-	if (camerawork->GetAppearEndF() && camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_BEFORE && camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_FIRST)
+	if (camerawork->GetAppearEndF() && camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_BEFORE && camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_SECOND)
 		loadobj->Draw(dxCommon);
 
 	ParticleEmitter::GetInstance()->DeathDrawAll();
 	//パーティクル描画
 	if (camerawork->GetCameraState() != CameraState::CAMERA_BOSSAPPEAR &&
-		camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_FIRST) {
+		camerawork->GetCameraState() != CameraState::CAMERA_BOSSDEAD_AFTER_SECOND) {
 		ParticleEmitter::GetInstance()->FlontDrawAll();
 	}
 
