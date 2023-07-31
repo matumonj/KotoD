@@ -43,13 +43,8 @@ void ModelManager::SecondInitialize()
 	LoadModel(CD, "CD");
 
 	LoadModel(NOTE, "NOTE");
-	LoadModel(UPBOX, "upbox");
-	LoadModel(WIDTH1, "CD");
-	LoadModel(WIDTH2, "CD");
-	LoadModel(WIDTH3, "CD");
-	LoadModel(WIDTH4, "CD");
-	LoadModel(DOWNBOX, "downbox");
-
+	LoadModel(WIDTH1, "guardbox");
+	
 	LoadModel(GLASS1, "glass1");
 	LoadModel(MILKCAP_NORMAL, "milkCap_normal");
 	LoadModel(MILKCAP_BREAK, "milkCap_break");

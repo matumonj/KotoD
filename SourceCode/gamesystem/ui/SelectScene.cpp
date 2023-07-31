@@ -433,7 +433,7 @@ void SelectScene::Draw_SpriteBack() {
 	Helper::GetInstance()->Clamp(SelSubAlpha[1], 0.f, 1.f);
 	if (SelQuestSprite != nullptr) {
 		SelQuestSprite->SetSize({ 400,200 });
-		SelQuestSprite->SetPosition({ 780,0 });
+		SelQuestSprite->SetPosition({ 400,0 });
 		SelQuestSprite->SetColor({ 1,1,1,SelQuestalpha });
 
 		SelQuestSprite->Draw();
@@ -444,8 +444,8 @@ void SelectScene::Draw_SpriteBack() {
 		SelQuestSub[1]->SetSize({ 100,100 });
 		SelQuestSub[1]->SetPosition({ 1190,300 });
 		SelQuestSub[1]->SetColor({ 1,1,1,SelSubAlpha[1] });
-		SelQuestSub[0]->Draw();
-		SelQuestSub[1]->Draw();
+		//SelQuestSub[0]->Draw();
+		//SelQuestSub[1]->Draw();
 	}
 	for (auto i = 0; i < ObjNum; i++) {
 		if (!TipsAct[0] && !TipsAct[1] && !TipsAct[2] &&
