@@ -341,49 +341,67 @@ void SevenStageActor::TextRead() {
 	text_->Display();
 	m_AppTimer++;
 	if (m_AppTimer == 240) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_SECOND);
 		WhoRead("sutopon");
 	} else if (m_AppTimer == 350) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_THIRD);
 		WhoRead("girl");
 	} else if (m_AppTimer == 500) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_FOURTH);
 		WhoRead("sutopon");
 	} else if (m_AppTimer == 650) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_FIVE);
 		WhoRead("boss");
 	} else if (m_AppTimer == 800) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_SIX);
 		WhoRead("sutopon");
 	} else if (m_AppTimer == 950) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_SEVEN);
 		WhoRead("boss");
 	} else if (m_AppTimer == 1100) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_EIGHT);
 	} else if (m_AppTimer == 1250) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_NINE);
 	} else if (m_AppTimer == 1400) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_TEN);
 	} else if (m_AppTimer == 1550) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_ELEVEN);
 	} else if (m_AppTimer == 1700) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_TWELVE);
 	} else if (m_AppTimer == 1850) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_THIRTEEN);
 		WhoRead("sutopon");
 	} else if (m_AppTimer == 2000) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_FOURTEEN);
 	} else if (m_AppTimer == 2150) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_FIFETEEN);
 		WhoRead("boss");
 	} else if (m_AppTimer == 2300) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_SIXTEEN);
 	} else if (m_AppTimer == 2450) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_SEVENTEEN);
 		WhoRead("sutopon");
 	} else if (m_AppTimer == 2600) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_EIGHTTEEN);
 	} else if (m_AppTimer == 2750) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::LAST_TALK_NINETEEN);
 	} else if (m_AppTimer == 2950) {
 		camerawork->SetCameraSkip(true);
@@ -394,54 +412,72 @@ void SevenStageActor::TextRead() {
 //覚醒時のテキスト
 void SevenStageActor::AwakeText() {
 	if (m_AwakeTimer == 1) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		WhoRead("none");
 		text_->SelectText(TextManager::AWAKE_FIRST);
 	} else if (m_AwakeTimer == 200) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::AWAKE_SECOND);
 	} else if (m_AwakeTimer == 400) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::AWAKE_THIRD);
 	}
 }
 //ボス撃破時のエフェクト
 void SevenStageActor::DeathText() {
 	if (m_EndTimer == 1) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_FIRST);
 		WhoRead("boss");
 	} else if (m_EndTimer == 200) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_SECOND);
 	} else if (m_EndTimer == 350) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_THIRD);
 	} else if (m_EndTimer == 500) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_FOURTH);
 		WhoRead("sutopon");
 	} else if (m_EndTimer == 650) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_FIVE);
 	} else if (m_EndTimer == 800) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_SIX);//ボス
 		WhoRead("boss");
 	} else if (m_EndTimer == 900) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_SEVEN);//ボス
 	} else if (m_EndTimer == 1000) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_EIGHT);//コトコ
 		WhoRead("girl");
 	} else if (m_EndTimer == 1100) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_NINE);//ボス
 		WhoRead("boss");
 	} else if (m_EndTimer == 1200) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_TEN);//コトコ
 		WhoRead("girl");
 	} else if (m_EndTimer == 1300) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_ELEVEN);//コトコ
 	} else if (m_EndTimer == 1400) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_TWELVE);//ボス
 		WhoRead("boss");
 	} else if (m_EndTimer == 1500) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_THIRTEEN);//コトコ
 		WhoRead("girl");
 	} else if (m_EndTimer == 1600) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_FOURTEEN);//すと
 		WhoRead("sutopon");
 	} else if (m_EndTimer == 1700) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::DEATH_FIFTEEN);//ボス
 		WhoRead("boss");
 	}

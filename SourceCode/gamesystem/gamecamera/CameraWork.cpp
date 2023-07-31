@@ -997,13 +997,12 @@ void CameraWork::SixBossAppear() {
 		SplineSpeed = 180.f;
 	}
 	if (!Finish) {
-
 		spline->Upda(m_eyePos, SplineSpeed);
 	}
 	Helper::GetInstance()->Clamp(RadEffect, 0.f, 15.f);
 
 	if (spline->GetIndex() >= pointsList.size() - 1) {
-
+		m_CameraSkip = true;
 		if (Helper::GetInstance()->FrameCheck(m_Frame, 0.01f)) {
 			AppearEndF = true;
 			m_CameraState = CAMERA_NORMAL;
