@@ -2,6 +2,8 @@
 #include "ImageManager.h"
 #include "Helper.h"
 #include "Easing.h"
+#include "Audio.h"
+#include "VolumManager.h"
 ClearText* ClearText::GetInstance()
 {
 	static ClearText instance;
@@ -19,14 +21,22 @@ void ClearText::Initialize() {
 	m_Size = {};
 	m_Alive = {};
 	m_Frame = {};
+	m_Sound = false;
 }
 
 void ClearText::Update() {
 	const float l_AddFrame = 0.05f;
 
 	if (m_Alive) {
+		if (m_Frame > 0.3f) {
+			if (!m_Sound) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/clearSE.wav", VolumManager::GetInstance()->GetSEVolum() * 0.7f);
+				m_Sound = true;
+			}
+		}
 		if (Helper::GetInstance()->FrameCheck(m_Frame, l_AddFrame)) {
 			m_Frame = 1.0f;
+			
 		}
 	}
 
