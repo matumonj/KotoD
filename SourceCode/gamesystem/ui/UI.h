@@ -64,8 +64,19 @@ private:
 		UiMax,
 	};
 
+	enum SetumeiNo {
+		SETUMEI1,
+		SETUMEI2,
+		SETUMEI3,
+		SETUMEI4,
+		MAX,
+	};
+
+
 	//スプライト
 	std::array<SpriteData, UiMax> sprites = {};
+	std::array<SpriteData, MAX> setumei = {};
+
 
 	XMFLOAT2 m_GaugePos = { 430,623.f };
 	XMFLOAT2 m_GaugePosMini = { 430 + 42.0f,597 + 50.0f };
@@ -82,6 +93,8 @@ private:
 	XMFLOAT2 m_MiddleBossPos = { m_UnderBossPos.x - 279.f,m_UnderBossPos.y + 17.f };
 	XMFLOAT2 m_BossPos = { m_UnderBossPos.x - 279.f,m_UnderBossPos.y + 17.f };
 
+	XMFLOAT2 m_setumeipos = { 0,0 };
+
 	float m_PlayerCircleRot = 0.f;
 
 	float m_limit = 0.f;
@@ -91,6 +104,7 @@ private:
 	int oldbullet_type_ = 0;
 	XMFLOAT2 m_Circle = { 640.0f,360.0f };
 	std::vector<SpriteData>TexList = {};
+	std::vector<SpriteData> TexSetumei = {};
 
 	int circle = CircleCover;
 	int circleTimer = 0;
@@ -139,4 +153,10 @@ private:
 	void PlayerGauge();
 	void BulletChange();
 	void BossLife();
+	public:
+		void SetNowNumber(int number) { this->num = number; }
+		void SetumeiUpdate();
+		void SetumiDraw();
+private:
+	int num = 5;
 };
