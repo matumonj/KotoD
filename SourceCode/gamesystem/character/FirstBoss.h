@@ -119,24 +119,7 @@ private:
 	static const int BULLET_NUM = 4;
 	static const int CD_NUM = 4;
 private:
-	void GuardUpdate();
-	void GuardAreacreate();
 
-	static constexpr int GuardSize = 6;
-	array<unique_ptr<IKEObject3d>, GuardSize> guardtex;
-	std::array<float, GuardSize>guardtexEaseT;
-	std::array<XMFLOAT3, GuardSize>guardRot;
-	std::array<XMFLOAT3, GuardSize>guardScl;
-	std::array<XMFLOAT3, GuardSize>guardPos;
-	std::array<XMFLOAT3, GuardSize>guardOldPos;
-	std::array<float, GuardSize>guardAlpha;
-	std::array<float, GuardSize>guardUvY;
-
-	float GuardEaseT;
-	bool GuardStart = false;
-	float GuardTime;
-	float GuardTimes;
-private:
 	//各クラス
 	unique_ptr<ConfuEffect> confueffect;
 	unique_ptr<NoteEffect> noteeffect;
