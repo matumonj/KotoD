@@ -44,6 +44,8 @@ public:
 	void EndRollUpdate(int Timer);
 	//タイトルの更新
 	void TitleUpdate();
+
+	void TyutorialUpdate();
 	//キャラの状態
 	enum CharaState
 	{
@@ -135,7 +137,8 @@ public:
 	void SetConfu(const bool Confu) { this->m_Confu = Confu; }
 	void SetConfuTimer(const int ConfuTimer) { this->m_ConfuTimer = ConfuTimer; }
 	void SetSkip(const bool Skip) { this->m_Skip = Skip; }
-
+	void SetViewSutopon(const bool view) { this->m_viewBull = view; }
+	void Display() { this->display = true; }
 private://各クラス
 	vector<InterBullet*> ghostbullets;//言霊
 	vector<InterBullet*> attackbullets;//攻撃
@@ -189,6 +192,8 @@ private://各クラス
 
 	bool m_HitPlayer = false;
 
+	bool not_walk = false;
+
 	//ラスボスのときの動き
 	enum DarkState {
 		DARK_SET,
@@ -222,6 +227,7 @@ private://各クラス
 	}_LastEndState = LAST_END_SET;
 
 	bool m_viewBull = false;
+	bool display = true;
 public:
 	vector<InterBullet*>GetBulllet_ghost() { return ghostbullets; }
 	vector<InterBullet*>GetBulllet_attack() { return attackbullets; }

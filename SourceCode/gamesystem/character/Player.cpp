@@ -251,7 +251,7 @@ void Player::Draw(DirectXCommon* dxCommon)
 	BulletDraw(attackbullets, dxCommon);
 	IKEObject3d::PreDraw();
 	skirtobj->Draw();
-	if (m_viewBull) {
+	if (m_viewBull&&display) {
 		sutoobj->Draw();
 	}
 	IKEObject3d::PostDraw();
@@ -1079,4 +1079,13 @@ void Player::TitleUpdate() {
 
 	playerattach->TitleUpdate();
 	SetParam();
+}
+
+void Player::TyutorialUpdate()
+{
+	fbxmodels->GetBoneIndexMat(index, skirtmat);
+	skirtobj->FollowUpdate(skirtmat);
+	skirtobj->SetColor(m_Color);
+	SetParam();
+	display = false;
 }
