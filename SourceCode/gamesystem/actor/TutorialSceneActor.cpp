@@ -601,7 +601,7 @@ void TutorialSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Li
 	//状態移行(stateに合わせる)
 	(this->*stateTable[static_cast<size_t>(nowstate_)])();
 	//各クラス更新
-	if (static_cast<int>(nowstate_) % 2 == 1) {
+	if (static_cast<int>(nowstate_) % 2 == 1||static_cast<int>(nowstate_) == 0) {
 		ui->SetNowNumber(number);
 		ui->SetumeiUpdate();
 		ui->Update();
