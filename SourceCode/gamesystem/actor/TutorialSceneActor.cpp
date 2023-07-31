@@ -158,6 +158,7 @@ void TutorialSceneActor::TextCatchFollowState() {
 		text_->SetConversation(TextManager::NONE);
 		conversation = 0;
 		number = 1;
+		Player::GetInstance()->Display();
 	}
 
 }
@@ -607,6 +608,9 @@ void TutorialSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Li
 		ui->Update();
 		Player::GetInstance()->Update();
 	}
+	if (static_cast<int>(nowstate_) == 0) {
+		Player::GetInstance()->TyutorialUpdate();
+	}
 	ParticleEmitter::GetInstance()->Update();
 	BackObj::GetInstance()->Update();
 	CameraUpdate(camera);
@@ -672,7 +676,9 @@ void TutorialSceneActor::FrontDraw(DirectXCommon* dxCommon) {
 		IKESprite::PostDraw();
 	}
 	else {
-		ui->Draw();
+		if (nowstate_ != state::INTORO && nowstate_ != state::MOVE) {
+			ui->Draw();
+		}
 	}
 	if (messagewindow_->DisplayCheck()) {
 		text_->TestDraw(dxCommon);

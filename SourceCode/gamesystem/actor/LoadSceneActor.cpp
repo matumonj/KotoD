@@ -57,11 +57,6 @@ void LoadSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightG
 	if (feedf) {
 		Feed2::GetInstance()->FeedIn2(Feed2::FeedType2::BLACK, 0.02f, feedf);
 	}
-	
-	if (Input::GetInstance()->TriggerKey(DIK_0)) {
-		Audio::GetInstance()->StopWave(AUDIO_TITLE);
-		str = "GAMEOVER";
-	}
 
 	if (!s_Skip) {
 		str = "TUTORIAL";
