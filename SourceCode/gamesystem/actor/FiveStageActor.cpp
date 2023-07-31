@@ -186,7 +186,7 @@ void FiveStageActor::BackDraw(DirectXCommon* dxCommon) {
 
 void FiveStageActor::IntroUpdate(DebugCamera* camera) {
 	//演出スキップ
-	if (Input::GetInstance()->TriggerButton(Input::START)) {
+	if (Input::GetInstance()->TriggerButton(Input::A)) {
 		camerawork->SetCameraSkip(true);
 	}
 

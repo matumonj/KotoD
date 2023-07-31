@@ -238,7 +238,7 @@ void FourthStageActor::ColEnemy(std::vector<InterEnemy*> enelist) {
 
 void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 	//演出スキップ
-	if (Input::GetInstance()->TriggerButton(Input::START)) {
+	if (Input::GetInstance()->TriggerButton(Input::A)) {
 		camerawork->SetCameraSkip(true);
 	}
 

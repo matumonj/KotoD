@@ -301,7 +301,7 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 	}
 
 	//演出スキップ
-	if (Input::GetInstance()->TriggerButton(Input::START)) {
+	if (Input::GetInstance()->TriggerButton(Input::A)) {
 		camerawork->SetCameraSkip(true);
 	}
 

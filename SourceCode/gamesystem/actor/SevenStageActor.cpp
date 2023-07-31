@@ -208,7 +208,7 @@ void SevenStageActor::ImGuiDraw(DirectXCommon* dxCommon) {
 void SevenStageActor::IntroUpdate(DebugCamera* camera) {
 
 	//演出スキップ
-	if (Input::GetInstance()->TriggerButton(Input::START)) {
+	if (Input::GetInstance()->TriggerButton(Input::A)) {
 		camerawork->SetCameraSkip(true);
 	}
 
@@ -277,7 +277,7 @@ void SevenStageActor::MainUpdate(DebugCamera* camera) {
 			Player::GetInstance()->LastDeadUpdate(m_EndTimer);
 			DeathText();
 
-			if (Input::GetInstance()->TriggerButton(Input::START)) {
+			if (Input::GetInstance()->TriggerButton(Input::A)) {
 				camerawork->SetEndDeath(true);
 			}
 		}
