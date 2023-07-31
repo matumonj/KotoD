@@ -30,13 +30,12 @@ void ClearText::Update() {
 	if (m_Alive) {
 		if (m_Frame > 0.3f) {
 			if (!m_Sound) {
-				Audio::GetInstance()->PlayWave("Resources/Sound/SE/clearSE.wav", VolumManager::GetInstance()->GetSEVolum() * 0.7f);
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/clearSE.wav", VolumManager::GetInstance()->GetSEVolum() * 0.5f);
 				m_Sound = true;
 			}
 		}
 		if (Helper::GetInstance()->FrameCheck(m_Frame, l_AddFrame)) {
 			m_Frame = 1.0f;
-			
 		}
 	}
 
