@@ -72,7 +72,6 @@ void SevenBoss::CSVLoad() {
 	m_MaxHp = m_HP;
 	m_CircleScale = 30.0f;
 }
-
 void (SevenBoss::* SevenBoss::stateTable[])() = {
 	&SevenBoss::InterValMove,//動きの合間
 	&SevenBoss::Polter,//ポルターガイスト
@@ -276,17 +275,6 @@ void SevenBoss::Draw(DirectXCommon* dxCommon) {
 }
 //ImGui
 void SevenBoss::ImGui_Origin() {
-	ImGui::Begin("Seven");
-	ImGui::Text("InterVal:%d", m_InterVal);
-	ImGui::Text("Vanish:%d", m_VanishTarget);
-	ImGui::End();
-
-	////火の玉
-	//for (FireBoll* newfire : fireboll) {
-	//	if (newfire != nullptr) {
-	//		newfire->ImGuiDraw();
-	//	}
-	//}
 }
 //インターバル
 void SevenBoss::InterValMove() {
@@ -640,16 +628,16 @@ void SevenBoss::BirthPolter(const std::string& PolterName) {
 			newpolter->SetPolterType(TYPE_FOLLOW);
 			newpolter->SetTargetTimer(i * l_LimitTimer);
 			if (i == 0) {
-				newpolter->SetPosition({ m_Position.x + 2.0f,m_Position.y - 10.0f,m_Position.z });
+				newpolter->SetPosition({ m_Position.x + 6.0f,m_Position.y - 10.0f,m_Position.z });
 			}
 			else if (i == 1) {
-				newpolter->SetPosition({ m_Position.x - 2.0f,m_Position.y - 10.0f,m_Position.z });
+				newpolter->SetPosition({ m_Position.x - 6.0f,m_Position.y - 10.0f,m_Position.z });
 			}
 			else if (i == 2) {
-				newpolter->SetPosition({ m_Position.x,m_Position.y - 10.0f,m_Position.z + 2.0f});
+				newpolter->SetPosition({ m_Position.x,m_Position.y - 10.0f,m_Position.z + 6.0f});
 			}
 			else {
-				newpolter->SetPosition({ m_Position.x,m_Position.y - 10.0f,m_Position.z - 2.0f });
+				newpolter->SetPosition({ m_Position.x,m_Position.y - 10.0f,m_Position.z - 6.0f });
 			}
 			poltergeist.push_back(newpolter);
 		}

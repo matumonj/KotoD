@@ -107,6 +107,7 @@ void Player::InitState(const XMFLOAT3& pos) {
 	_LastState = LAST_SET;
 	_EndState = END_SET;
 	_LastEndState = LAST_END_SET;
+	AnimationControl(AnimeName::IDLE, true, 1);
 	effects.clear();
 	abseffect.clear();
 }
