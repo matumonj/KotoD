@@ -19,17 +19,16 @@ void TitleSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 	sceneChanger_->Initialize();
 	sceneChanger_->FeedInit();
 	//sceneChanger_->ChangeFeedStart();
-	if(Feed2::GetInstance()==nullptr)
-	{
+	if (Feed2::GetInstance() == nullptr) {
 		Feed2::GetInstance()->SetIni2();
 	}
 	//タイトル
 	TitleSprite = IKESprite::Create(ImageManager::PLAY, { 0.0f,0.0f });
 	TitleSprite->SetAddOffset(-0.0005f);
-	TitleWordSprite= IKESprite::Create(ImageManager::TITLEWORD, pos);
+	TitleWordSprite = IKESprite::Create(ImageManager::TITLEWORD, pos);
 	TitleWordSprite->SetScale(0.3f);
 
-	CreditSprite = IKESprite::Create(ImageManager::CREDIT,{640.0f,360.0f});
+	CreditSprite = IKESprite::Create(ImageManager::CREDIT, { 640.0f,360.0f });
 	CreditSprite->SetAnchorPoint({ 0.5f,0.5f });
 
 	const int TitleCount = TITLE_MAX;
@@ -70,7 +69,7 @@ void TitleSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Light
 			SceneManager::GetInstance()->ChangeScene("LOAD");
 		}
 	}
-
+	sceneChanger_->Update();
 	lightgroup->Update();
 	ParticleEmitter::GetInstance()->FireEffect(100, { 0.0f,23.0f,0.0f }, 5.0f, 0.0f, { 1.0f,0.5f,0.0f,0.5f }, { 1.0f,0.5f,0.0f,0.5f });
 	//パーティクル更新
@@ -103,8 +102,7 @@ void TitleSceneActor::Draw(DirectXCommon* dxCommon) {
 		postEffect->Draw(dxCommon->GetCmdList());
 		//ImGuiDraw(dxCommon);
 		dxCommon->PostDraw();
-	}
-	else {
+	} else {
 		postEffect->PreDrawScene(dxCommon->GetCmdList());
 		postEffect->Draw(dxCommon->GetCmdList());
 		postEffect->PostDrawScene(dxCommon->GetCmdList());
@@ -124,18 +122,18 @@ void TitleSceneActor::FrontDraw() {
 		TitlePartsSprite[i]->Draw();
 	}
 	SelectScene::GetIns()->Draw_Sprite();
-	
+
 	CreditSprite->Draw();
 	IKESprite::PostDraw();
 	menu->Draw();
-	if(feedF)
-	Feed2::GetInstance()->Draw2();
-	//sceneChanger_->FeedDraw();
-//	sceneChanger_->Draw();
+	if (feedF)
+		Feed2::GetInstance()->Draw2();
+	if (SceneSave::GetInstance()->GetEndRoll()) {
+		sceneChanger_->Draw();
+	}
 }
 //背面描画
-void TitleSceneActor::BackDraw(DirectXCommon* dxCommon)
-{
+void TitleSceneActor::BackDraw(DirectXCommon* dxCommon) {
 	IKESprite::PreDraw();
 	TitleSprite->Draw();
 	IKESprite::PostDraw();
@@ -158,7 +156,7 @@ void TitleSceneActor::SceneSelect() {
 	if (!m_Change && !m_Credit) {
 		if (_SelectType < SELECT_CREDIT) {
 			//ボタンの場合
-			if(input->TriggerButton(Input::DOWN)){
+			if (input->TriggerButton(Input::DOWN)) {
 				_SelectType++;
 			}
 
@@ -168,8 +166,7 @@ void TitleSceneActor::SceneSelect() {
 					_SelectType++;
 					m_StickDOWN = true;
 				}
-			}
-			else {
+			} else {
 				m_StickDOWN = false;
 			}
 		}
@@ -185,8 +182,7 @@ void TitleSceneActor::SceneSelect() {
 					_SelectType--;
 					m_StickUP = true;
 				}
-			}
-			else {
+			} else {
 				m_StickUP = false;
 			}
 		}
@@ -202,13 +198,11 @@ void TitleSceneActor::SceneSelect() {
 			SceneSave::GetInstance()->SetEndRoll(false);
 			if (_SelectType == NORMAL_SCENE) {
 				s_Skip = false;
-			}
-			else if(_SelectType == SELECT_SCENE) {
+			} else if (_SelectType == SELECT_SCENE) {
 				s_Skip = true;
 			}
 			m_Change = true;
-		}
-		else {
+		} else {
 			m_Credit = true;
 		}
 	}
@@ -217,8 +211,7 @@ void TitleSceneActor::SceneSelect() {
 	if (!m_Credit) {
 		m_CreditSize = { Ease(In,Cubic,0.5f,m_CreditSize.x,0.0f),
 		Ease(In,Cubic,0.5f,m_CreditSize.y,0.0f), };
-	}
-	else {
+	} else {
 		m_CreditSize = { Ease(In,Cubic,0.5f,m_CreditSize.x,1280.0f),
 		Ease(In,Cubic,0.5f,m_CreditSize.y,720.0f), };
 
@@ -246,8 +239,7 @@ void TitleSceneActor::TitleMove() {
 		m_PartsSize[SELECT_AREA] = m_PartsSize[NORMAL_SCENE];
 		m_PartsSize[SELECT_SCENE] = { 256.0f,64.0f };
 		m_PartsSize[SELECT_CREDIT] = { 256.0f,64.0f };
-	}
-	else if(_SelectType == SELECT_SCENE) {
+	} else if (_SelectType == SELECT_SCENE) {
 		m_Angle[SELECT_SCENE] += 2.0f;
 		m_Angle2[SELECT_SCENE] = m_Angle[SELECT_SCENE] * (3.14f / 180.0f);
 		//選択時座標が上下に動く
@@ -260,8 +252,7 @@ void TitleSceneActor::TitleMove() {
 		m_PartsSize[SELECT_AREA] = m_PartsSize[SELECT_SCENE];
 		m_PartsSize[NORMAL_SCENE] = { 256.0f,64.0f };
 		m_PartsSize[SELECT_CREDIT] = { 256.0f,64.0f };
-	}
-	else {
+	} else {
 		m_Angle[SELECT_CREDIT] += 2.0f;
 		m_Angle2[SELECT_CREDIT] = m_Angle[SELECT_CREDIT] * (3.14f / 180.0f);
 		//選択時座標が上下に動く
