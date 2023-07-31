@@ -432,7 +432,7 @@ void SelectScene::Draw_SpriteBack() {
 	Helper::GetInstance()->Clamp(SelSubAlpha[0], 0.f, 1.f);
 	Helper::GetInstance()->Clamp(SelSubAlpha[1], 0.f, 1.f);
 	if (SelQuestSprite != nullptr) {
-		SelQuestSprite->SetSize({ 400,200 });
+		SelQuestSprite->SetSize({ 500,200 });
 		SelQuestSprite->SetPosition({ 400,0 });
 		SelQuestSprite->SetColor({ 1,1,1,SelQuestalpha });
 

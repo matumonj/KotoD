@@ -95,7 +95,7 @@ void GuardAction::GuardAreacreate()
 	if (GuardStart) {
 		GuardTime++;
 		Helper::GetInstance()->FrameCheck(guardtexEaseT[5], 0.02f);
-		for (auto i = 5; i >=0; i--) {
+		for (auto i = GuardSize-2; i >=0; i--) {
 			if(guardtexEaseT[i+1] > 0.8f)
 				Helper::GetInstance()->FrameCheck(guardtexEaseT[i], 0.02f);
 			}
