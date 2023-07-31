@@ -62,6 +62,7 @@ private:
 private:
 	static const int CD_NUM = 4;
 private:
+	unique_ptr<IKEObject3d>skirtobj;
 	//各クラス
 	unique_ptr<ConfuEffect> confueffect;
 	unique_ptr<NoteEffect> noteeffect;
@@ -75,7 +76,9 @@ private:
 		STATE_HIT,
 		STATE_END
 	};
-
+	float rotys;
+	int index;
+	XMMATRIX skirtmat;
 	//停止時間
 	int m_StopTimer = 0;
 	//どの行動にするか
@@ -95,7 +98,7 @@ private:
 
 	int m_RotCount = 0;
 	int m_RotTimer = 0;
-	
+
 	enum AreaState {
 		AREA_SET,
 		AREA_STOP,
@@ -172,13 +175,13 @@ private:
 	int CoolDShot;
 	float WalkSpeed;
 
-		//ガード続く時間
+	//ガード続く時間
 	float GuardTime;
-		//ノックバック頻度
+	//ノックバック頻度
 	int KnockInter;
 	int noAction;
-	float KnockDam, MeteoDam, ShotDam, UltDam,DarkShotDam;
-	int KnockTimer=1;
+	float KnockDam, MeteoDam, ShotDam, UltDam, DarkShotDam;
+	int KnockTimer = 1;
 	int GuardCount;
 	static void (FiveBoss::* attackTable[])();
 	enum ActionPhase
@@ -217,7 +220,7 @@ private:
 	std::vector<int> m_Life;
 	int JudgAttack;
 
-	
+
 	inline void Shot() { shot->Upda(); }
 	inline void Normal() { normal->Upda(); }
 	inline void Smash() { smash->Upda(); }

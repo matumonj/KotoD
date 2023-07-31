@@ -32,10 +32,6 @@ void FiveStageActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, Li
 	sceneChanger_->Initialize();
 
 	enemymanager = std::make_unique<EnemyManager>("FIVESTAGE");
-	//enemymanager->Initialize(dxCommon);
-	text_ = make_unique<BossText>();
-	text_->Initialize(dxCommon);
-	text_->SelectText(TextManager::ANGER_TALK);
 	camerawork->SetBoss(enemymanager->GetBoss());
 	camerawork->SetCameraState(CAMERA_BOSSAPPEAR);
 	camerawork->SetSceneName("FIVESTAGE");
@@ -159,11 +155,7 @@ void FiveStageActor::FrontDraw(DirectXCommon* dxCommon)
 	if (m_SceneState == SceneState::MainState && !camerawork->GetFeedEnd()) {
 		ui->Draw();
 	}
-	if (m_SceneState == SceneState::IntroState) {
-		if ((camerawork->GetAppearType() == APPEAR_SEVEN) || (camerawork->GetAppearType() == APPEAR_EIGHT)) {
-			text_->SpriteDraw(dxCommon);
-		}
-	}
+
 	IKESprite::PostDraw();
 	ClearText::GetInstance()->Draw();
 	menu->Draw();

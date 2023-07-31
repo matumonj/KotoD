@@ -194,9 +194,13 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 		text_->Display();
 		//最初の言葉(怒り)
 		if (m_AppState == AppState::ANGER_START) {
+			if (m_AppTimer == 1) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
+			}
 			m_AppTimer++;
 			text_->SelectText(TextManager::ANGER_TALK);
 			if (m_AppTimer == 150) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				m_AppState = AppState::ANGER_Third;
 			}
 		}
@@ -205,6 +209,7 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 			m_AppTimer++;
 			text_->SelectText(TextManager::ANGER_TALK2);
 			if (m_AppTimer == 300) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				m_AppState = AppState::JOY_START;
 				enemymanager->DirSet(DIR_JOY);
 			}
@@ -214,6 +219,7 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 			m_AppTimer++;
 			text_->SelectText(TextManager::JOY_TALK);
 			if (m_AppTimer == 450) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				m_AppState = AppState::JOY_Third;
 			}
 		}
@@ -222,6 +228,7 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 			m_AppTimer++;
 			text_->SelectText(TextManager::JOY_TALK2);
 			if (m_AppTimer == 600) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				m_AppState = AppState::JOY_THIRD;
 			}
 		}
@@ -230,6 +237,7 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 			m_AppTimer++;
 			text_->SelectText(TextManager::JOY_TALK3);
 			if (m_AppTimer == 750) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				m_AppState = AppState::SELECT_EMO;
 			}
 		}
@@ -239,9 +247,11 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 			text_->ChangeColor(2, { 0.5f,1.0f,0.1f,1.0f });
 			text_->SelectText(TextManager::SELECT_TALK);
 			if (Input::GetInstance()->TriggerButton(Input::Y)) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				enemymanager->DirSet(DIR_ANGER);
 				m_AppState = AppState::EMO_ANGER;
 			} else if (Input::GetInstance()->TriggerButton(Input::X)) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				enemymanager->DirSet(DIR_JOY);
 				m_AppState = AppState::EMO_JOY;
 			}
@@ -254,6 +264,7 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 			}
 			text_->SelectText(TextManager::SELECT_ANGER);
 			if (m_AppTimer == 900) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				m_AppState = AppState::EMO_ANGER2;
 				camerawork->SetApproach(true);
 			}
@@ -271,6 +282,7 @@ void ThirdStageActor::IntroUpdate(DebugCamera* camera) {
 			}
 			text_->SelectText(TextManager::SELECT_JOY);
 			if (m_AppTimer == 900) {
+				Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 				m_AppState = AppState::EMO_JOY2;
 				camerawork->SetApproach(true);
 			}

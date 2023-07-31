@@ -255,18 +255,23 @@ void SixStageActor::IntroUpdate(DebugCamera* camera) {
 	//テキスト関係
 	text_->Display();
 	if (m_AppTimer == 1) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::TALK_FIRST);
 	} else if (m_AppTimer == 150) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::TALK_SECOND);
 	} else if (m_AppTimer == 300) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::TALK_THIRD);
 		text_->ChangeColor(0, { 1.0f,0.0f,0.0f,1.0f });
 	} else if (m_AppTimer == 400) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::TALK_FOURTH);
 		for (int i = 0; i < 3; i++) {
 			text_->ChangeColor(i, { 1.0f,1.0f,0.0f,1.0f });
 		}
 	} else if (m_AppTimer == 500) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::TALK_FIVE);
 	}
 }

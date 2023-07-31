@@ -69,6 +69,9 @@ bool FiveBoss::Initialize()
 	guard = new GuardAction();
 	knock = new KnockAttack();
 	darkshot = new DarkSutoponShot();
+	skirtobj.reset(new IKEObject3d());
+	skirtobj->Initialize();
+	skirtobj->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::SKIRT));
 
 	smash->Init();
 	shot->Init();
@@ -164,6 +167,14 @@ void FiveBoss::Action()
 			(this->*attackTable[_aPhase])();
 		}
 	}
+	//	skirtobj->SetRotation({ 0,0,90 });
+	skirtobj->SetScale({ 3,3,3 });
+
+	index = 13;
+	fbxmodel->GetBoneIndexMat(index, skirtmat);
+	skirtobj->SetRotation({ 0,0,90 });
+	skirtobj->FollowUpdate(skirtmat);
+	skirtobj->SetColor(m_Color);
 
 	//knockの攻撃判定
 	KnockTimer++;
@@ -311,7 +322,7 @@ void FiveBoss::Action()
 	//弾とボスの当たり判定
 	vector<InterBullet*> _playerBulA = Player::GetInstance()->GetBulllet_attack();
 	if (!guard->GetGuardStart())
-	CollideBul(_playerBulA, Type::CIRCLE);
+		CollideBul(_playerBulA, Type::CIRCLE);
 	//プレイヤーの当たり判定
 	ColPlayer();
 	//OBJのステータスのセット
@@ -351,7 +362,7 @@ void FiveBoss::Action()
 		}
 		m_ParticleTimer = {};
 	}
-	
+
 }
 
 void FiveBoss::AppearAction()
@@ -471,7 +482,9 @@ void FiveBoss::AppParticle() {
 }
 void FiveBoss::ImGui_Origin()
 {
-
+	ImGui::Begin("bone");
+	ImGui::SliderFloat("rot", &rotys, 0, 360);
+	ImGui::SliderInt("index", &index, 0, 24); ImGui::End();
 }
 
 void FiveBoss::EffecttexDraw(DirectXCommon* dxCommon)
@@ -498,7 +511,9 @@ void FiveBoss::Draw(DirectXCommon* dxCommon)
 	knock->Draw(dxCommon);
 	fbxmodel->Draw(dxCommon->GetCmdList());
 	guard->Draw(dxCommon);
-
+	IKEObject3d::PreDraw();
+	skirtobj->Draw();
+	IKEObject3d::PostDraw();
 }
 
 void FiveBoss::MatTranstoPos(XMMATRIX trans, XMFLOAT3& m_Pos)

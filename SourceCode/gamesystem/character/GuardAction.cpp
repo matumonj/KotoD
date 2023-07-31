@@ -13,12 +13,12 @@ void GuardAction::Init()
 		guardtex[i]->Initialize();
 		guardAlpha[i] = 0.f;
 	}
-	guardtex[0]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::UPBOX));
+	guardtex[0]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH1));
 	guardtex[1]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH1));
-	guardtex[2]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH2));
-	guardtex[3]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH3));
-	guardtex[4]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH4));
-	guardtex[5]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::DOWNBOX));
+	guardtex[2]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH1));
+	guardtex[3]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH1));
+	guardtex[4]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH1));
+	guardtex[5]->SetModel(ModelManager::GetInstance()->GetModel(ModelManager::WIDTH1));
 	//ÉKÅ[Éhë±Ç≠éûä‘
 	GuardTimes = static_cast<float>(std::any_cast<double>(LoadCSV::LoadCsvParam("Resources/csv/chara/boss/five/Fiveboss.csv", "GuardTime")));
 
