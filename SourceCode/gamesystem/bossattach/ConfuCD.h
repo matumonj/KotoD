@@ -1,0 +1,27 @@
+#pragma once
+#include "InterCD.h"
+
+class ConfuCD :
+	public InterCD {
+public:
+	ConfuCD();
+	bool Initialize() override;//èâä˙âª
+
+	void Origin_Draw(DirectXCommon* dxCommon) override;//ï`âÊ
+
+	void BirthCD() override;
+	void StayCD() override;
+	void CatchCD() override;
+	void DeathCD() override;
+	void ResPornCD() override;
+public:
+
+private:
+	void Action() override;//çsìÆ
+
+	void AudioAction() override;//çsìÆ
+
+	void ImGui_Origin() override;
+private:
+
+};
