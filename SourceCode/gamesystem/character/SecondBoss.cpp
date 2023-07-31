@@ -35,7 +35,7 @@ bool SecondBoss::Initialize() {
 
 	damageara.reset(IKETexture::Create(ImageManager::DAMAGEAREA, { 0,0,0 }, { 0.5f,0.5f,0.5f }, { 1,1,1,1 }));
 	damageara->TextureCreate();
-	m_Radius = 5.0f;
+	m_Radius = 12.0f;
 
 	//優先度
 	CirclePriority = static_cast<int>(std::any_cast<double>(LoadCSV::LoadCsvParam("Resources/csv/chara/boss/Second/Secondboss.csv", "CPriority")));
