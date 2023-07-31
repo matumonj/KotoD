@@ -77,6 +77,7 @@ void IKEMesh::CreateBuffers()
 		nullptr,
 		IID_PPV_ARGS(&vertBuff));
 
+
 	// 頂点バッファへのデータ転送
 	VertexPosNormalUv* vertMap = nullptr;
 	result = vertBuff->Map(0, nullptr, (void**)&vertMap);
