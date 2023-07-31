@@ -32,6 +32,7 @@ private:
 	float m_Frame = {};
 	XMFLOAT2 m_Size = {};
 	bool m_Alive = false;
+	bool m_Sound = false;
 
 	unique_ptr<IKESprite> ClearSprite;
 };

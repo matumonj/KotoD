@@ -262,7 +262,7 @@ void SelectScene::Upda() {
 	m_Birth[TITLE] = true;
 	for (int i = 0; i < MAX; i++) {
 		if (IconColor[i] < 1.f) { continue; }
-		if (Input::GetInstance()->TriggerButton(Input::B)/* && (m_Birth[i])*/) {
+		if (Input::GetInstance()->TriggerButton(Input::B) && (m_Birth[i])) {
 			JumpK = true;
 			JumpS = true;
 			TipsAct[i] = true;
@@ -576,10 +576,7 @@ void SelectScene::StateManager() {
 	//debugよう
 	m_Scale[TITLE] = { 0.7025f,0.71f,0.75f };
 
-	//m_Wide = true;
 	m_SelectState = SELECT_SECOND;
-	//m_Wide = true;
-	//
 	//クリア状況に応じてOBJの大きさだったりが違う
 	if (m_SelectState == SELECT_FIRST) {		//ここは牛乳のみ
 

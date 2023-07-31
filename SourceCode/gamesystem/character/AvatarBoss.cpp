@@ -299,10 +299,10 @@ void AvatarBoss::BirthPolter(const std::string& PolterName) {
 			newpolter->SetPolterType(TYPE_FOLLOW);
 			newpolter->SetTargetTimer(i * l_LimitTimer);
 			if (i == 0) {
-				newpolter->SetPosition({ m_Position.x + 2.0f,m_Position.y - 10.0f,m_Position.z });
+				newpolter->SetPosition({ m_Position.x + 4.0f,m_Position.y - 10.0f,m_Position.z });
 			}
 			else if (i == 1) {
-				newpolter->SetPosition({ m_Position.x - 2.0f,m_Position.y - 10.0f,m_Position.z });
+				newpolter->SetPosition({ m_Position.x - 4.0f,m_Position.y - 10.0f,m_Position.z });
 			}
 			poltergeist.push_back(newpolter);
 		}
@@ -327,7 +327,7 @@ void AvatarBoss::BirthPolter(const std::string& PolterName) {
 void AvatarBoss::Vanish() {
 	const int l_LimitTimer = 200;
 	const int l_LimitTimer2 = 30;
-	const float l_AddFrame = 0.05f;
+	const float l_AddFrame = 0.025f;
 	if (_VanishType == VANISH_SET) {
 		m_MoveTimer++;
 		if (m_MoveTimer == 120) {

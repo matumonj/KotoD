@@ -398,6 +398,8 @@ void SixBoss::EndMove() {
 	//次のCDを狙う
 	if (m_Length > 0.5f) {
 		Helper::GetInstance()->FollowMove(m_Position, {}, l_FollowSpeed);
+		m_AfterRot.y = Helper::GetInstance()->DirRotation(m_Position,{}, PI_90);
+		m_Rotation.y = Ease(In, Cubic, 0.5f, m_Rotation.y, m_AfterRot.y);
 		m_AddPower -= m_Gravity;
 		if (Helper::GetInstance()->CheckMax(m_Position.y, {}, m_AddPower)) {
 			m_AddPower = 0.5f;
