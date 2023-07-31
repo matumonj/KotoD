@@ -37,6 +37,7 @@ void EndRollActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 
 	backScreen_ = IKESprite::Create(ImageManager::PLAY, { 0,0 });
 	backScreen_->SetSize({ 1280.0f,720.0f });
+	backScreen_->SetAddOffset(-0.0005f);
 
 	SceneSave::GetInstance()->SetEndRoll(true);
 }
@@ -106,6 +107,7 @@ void EndRollActor::IntroUpdate(DebugCamera* camera) {
 
 	//セピアカラーになる
 	if (PlayPostEffect) {
+		backScreen_->SetAddOffset(0.0f);
 		if (Helper::GetInstance()->FrameCheck(m_Frame, l_AddFrame)) {
 			m_Frame = {};
 		}
