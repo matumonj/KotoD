@@ -406,7 +406,7 @@ void SecondBoss::NormalAttak::ShakeAction(XMFLOAT3& Pos, XMFLOAT3& Rot)
 	if (RotEaseTime >= 1.f) {
 
 		RotSpeed += 0.1f;
-		if (RotSpeed >= 3.5f && !shakeend) {
+		if (RotSpeed >= 6.0f && !shakeend) {
 			RemovePosEaseT += 0.05f;
 			if (RemovePosEaseT >= 1.f) {
 				shakeend = true;
