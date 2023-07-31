@@ -276,8 +276,8 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 	//テキスト関係
 	text_->Display();
 	if (m_AppTimer == 1) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_FIRST_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 200) {
@@ -286,6 +286,7 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 		text_->SelectText(TextManager::TALK_SECOND_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,0 };
 	} else if (m_AppTimer == 400) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_THIRD_T);
@@ -299,8 +300,8 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 		isShutter = true;
 		m_AppTimer++;
 	} else if (m_AppTimer == 850) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_FIVE_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 1050) {
@@ -309,8 +310,8 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 		text_->SelectText(TextManager::TALK_SIX_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,0 };
 	} else if (m_AppTimer == 1250) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_SEVEN_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 1450) {
@@ -319,8 +320,8 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 		text_->SelectText(TextManager::TALK_EIGHT_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,0 };
 	} else if (m_AppTimer == 1650) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_NINE_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 1850) {
@@ -334,18 +335,19 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 		shutterTimeMax = 60.0f;
 		stopTimerMax = 100.0f;
 		feedTimeMax = 10.0f;
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		text_->SelectText(TextManager::TALK_ELEVEN_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 2250) {
 		isShutter = true;
 		m_AppTimer++;
 	} else if (m_AppTimer == 2450) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_XII_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 2650) {
+		text_->ChangeColor({ 0.0f,1.f,1.f,1.f });
 		text_->SelectText(TextManager::TALK_XIII_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,0 };
 		sutopon_color_ = { 1,1,1,1 };
@@ -359,8 +361,8 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 		text_->ChangeColor({ 0.8f,0.0f,0.0f,1.0f });
 		text_->SelectText(TextManager::TALK_XV_T);
 	} else if (m_AppTimer == 3250) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_XVI_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 3450) {
@@ -369,8 +371,8 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 		text_->SelectText(TextManager::TALK_XVII_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,0 };
 	} else if (m_AppTimer == 3650) {
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_XVIII_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 3850) {
