@@ -2,7 +2,6 @@
 #include "input.h"
 #include "ImageManager.h"
 #include "ParticleEmitter.h"
-#include "Menu.h"
 #include "SelectScene.h"
 #include "TItleObj.h"
 //初期化
@@ -47,8 +46,6 @@ void TitleSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 	}
 
 	PlayPostEffect = true;
-	menu = make_unique<Menu>();
-	menu->Initialize();
 
 	camerawork->SetCameraState(CAMERA_TITLE);
 	camerawork->Update(camera);
@@ -85,7 +82,6 @@ void TitleSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Light
 
 	Player::GetInstance()->TitleUpdate();
 	TitleObj::GetInstance()->Update();
-	menu->Update();
 	camerawork->Update(camera);
 
 
@@ -125,7 +121,6 @@ void TitleSceneActor::FrontDraw() {
 
 	CreditSprite->Draw();
 	IKESprite::PostDraw();
-	menu->Draw();
 	if (feedF)
 		Feed2::GetInstance()->Draw2();
 	
