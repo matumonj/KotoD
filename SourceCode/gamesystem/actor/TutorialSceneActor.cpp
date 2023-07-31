@@ -556,7 +556,7 @@ void TutorialSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera
 //更新
 void TutorialSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
 	//スキップ
-	if (input->TriggerButton(Input::A)) {
+	if (input->TriggerButton(Input::START)) {
 		skip = true;
 	}
 

@@ -218,7 +218,7 @@ void FirstStageActor::BackDraw(DirectXCommon* dxCommon)
 void FirstStageActor::IntroUpdate(DebugCamera* camera)
 {
 	//演出スキップ
-	if (Input::GetInstance()->TriggerButton(Input::A)) {
+	if (Input::GetInstance()->TriggerButton(Input::START)) {
 		camerawork->SetCameraSkip(true);
 		tolk_F = false;
 		m_AppTimer = 0;

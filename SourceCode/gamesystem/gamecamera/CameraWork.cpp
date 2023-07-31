@@ -152,7 +152,7 @@ void CameraWork::BossAppear() {
 	} else {
 		assert(0);
 	}
-	if (Input::GetInstance()->TriggerButton(Input::A)) {
+	if (Input::GetInstance()->TriggerButton(Input::START)) {
 		m_CameraSkip = true;
 	}
 	if (m_CameraSkip) {
