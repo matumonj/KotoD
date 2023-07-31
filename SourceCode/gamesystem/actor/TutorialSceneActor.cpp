@@ -676,7 +676,9 @@ void TutorialSceneActor::FrontDraw(DirectXCommon* dxCommon) {
 		IKESprite::PostDraw();
 	}
 	else {
-		ui->Draw();
+		if (nowstate_ != state::INTORO && nowstate_ != state::MOVE) {
+			ui->Draw();
+		}
 	}
 	if (messagewindow_->DisplayCheck()) {
 		text_->TestDraw(dxCommon);

@@ -107,6 +107,7 @@ void Player::InitState(const XMFLOAT3& pos) {
 	_LastState = LAST_SET;
 	_EndState = END_SET;
 	_LastEndState = LAST_END_SET;
+	display = true;
 	AnimationControl(AnimeName::IDLE, true, 1);
 	effects.clear();
 	abseffect.clear();
@@ -828,6 +829,7 @@ void Player::AppearUpdate() {
 	m_viewBull = false;
 	index = 15;
 	fbxmodels->GetBoneIndexMat(index, skirtmat);
+	skirtobj->SetColor({ 0.7f,0.7f,0.7f,1.0f });
 	skirtobj->FollowUpdate(skirtmat);
 	SetParam();
 }
@@ -839,6 +841,7 @@ void Player::DeathUpdate() {
 	BulletDelete();
 	index = 15;
 	fbxmodels->GetBoneIndexMat(index, skirtmat);
+	skirtobj->SetColor({ 0.7f,0.7f,0.7f,1.0f });
 	skirtobj->FollowUpdate(skirtmat);
 	SetParam();
 }
