@@ -11,6 +11,7 @@ void InterBullet::Draw(DirectXCommon* dxCommon) {
 		Draw_Origin();
 		Obj_Draw();
 	
+
 	}
 }
 //ImGui
