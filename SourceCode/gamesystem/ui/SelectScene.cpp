@@ -99,8 +99,8 @@ void SelectScene::Init() {
 
 	BackSprite = IKESprite::Create(ImageManager::PLAY, { 0.0f,0.0f });
 	BackSprite->SetAddOffset(-0.0005f);
-	SelQuestSprite= IKESprite::Create(ImageManager::SELQUEsT, { 0.0f,0.0f });
-	SelQuestSub[0] = IKESprite::Create(ImageManager::SELQUEStsuB, {0.0f,0.0f});
+	SelQuestSprite = IKESprite::Create(ImageManager::SELQUEsT, { 0.0f,0.0f });
+	SelQuestSub[0] = IKESprite::Create(ImageManager::SELQUEStsuB, { 0.0f,0.0f });
 	SelQuestSub[1] = IKESprite::Create(ImageManager::SELQUEStsuB, { 0.0f,0.0f });
 
 	SelQuestalpha = 1.f;
@@ -255,14 +255,14 @@ void SelectScene::Upda() {
 	CloseIconView(CloseF);
 	Helper::GetInstance()->Clamp(closeScl, 0.f, MaxScl);
 	Helper::GetInstance()->Clamp(closeRad, 0.f, 1500.f);
-	if (CLastEaseTime <= 0.01f|| CLastEaseTime >= 1.f)
+	if (CLastEaseTime <= 0.01f || CLastEaseTime >= 1.f)
 		RotPedestal();
 
 	//Selectは常時出す
 	m_Birth[TITLE] = true;
 	for (int i = 0; i < MAX; i++) {
 		if (IconColor[i] < 1.f) { continue; }
-		if (Input::GetInstance()->TriggerButton(Input::B) && (m_Birth[i])) {
+		if (Input::GetInstance()->TriggerButton(Input::B)) {
 			JumpK = true;
 			JumpS = true;
 			TipsAct[i] = true;
@@ -384,18 +384,18 @@ void SelectScene::Draw_Obj(DirectXCommon* dxcomn) {
 	IKEObject3d::PostDraw();
 
 	IKETexture::PreDraw2(dxcomn, 1);
-	TitleTex->Draw();
+	//TitleTex->Draw();
 	IKETexture::PostDraw();
 }
 
 void SelectScene::Draw_Sprite() {
-	
+
 	for (auto i = 0; i < ObjNum; i++) {
 		if (!BossIcon[i]) { continue; }
 		if (_stages != i)continue;
 		BossIcon[i]->Draw();
 	}
-	
+
 }
 
 void SelectScene::ImGuiDraw() {
@@ -408,26 +408,26 @@ void SelectScene::ImGuiDraw() {
 }
 void SelectScene::Draw_SpriteBack() {
 	if (closeScl <= 0.f) { return; }
-		
-		bool temp[ObjNum] = {};
-		for (auto i = 0; i < TipsAct.size(); i++) {
-			temp[i] = !TipsAct[i];
-			if (TipsAct[i])
-			{
-				SelQuestalpha -= 0.1f;
-				SelSubAlpha[0] -= 0.1f;
-				SelSubAlpha[1] -= 0.1f;
-			}
-			if(!TipsAct[0]&& !TipsAct[1] && !TipsAct[2] &&
-				!TipsAct[3] && !TipsAct[4] && !TipsAct[5] &&
-				!TipsAct[6] && !TipsAct[7] )
-			{
-				SelQuestalpha += 0.1f;
-				SelSubAlpha[0] += 0.1f;
-				SelSubAlpha[1] += 0.1f;
-			}
+
+	bool temp[ObjNum] = {};
+	for (auto i = 0; i < TipsAct.size(); i++) {
+		temp[i] = !TipsAct[i];
+		if (TipsAct[i])
+		{
+			SelQuestalpha -= 0.1f;
+			SelSubAlpha[0] -= 0.1f;
+			SelSubAlpha[1] -= 0.1f;
 		}
-	
+		if (!TipsAct[0] && !TipsAct[1] && !TipsAct[2] &&
+			!TipsAct[3] && !TipsAct[4] && !TipsAct[5] &&
+			!TipsAct[6] && !TipsAct[7])
+		{
+			SelQuestalpha += 0.1f;
+			SelSubAlpha[0] += 0.1f;
+			SelSubAlpha[1] += 0.1f;
+		}
+	}
+
 	Helper::GetInstance()->Clamp(SelQuestalpha, 0.f, 1.f);
 	Helper::GetInstance()->Clamp(SelSubAlpha[0], 0.f, 1.f);
 	Helper::GetInstance()->Clamp(SelSubAlpha[1], 0.f, 1.f);
@@ -439,11 +439,11 @@ void SelectScene::Draw_SpriteBack() {
 		SelQuestSprite->Draw();
 
 		SelQuestSub[0]->SetPosition({ 1030,150 });
-			SelQuestSub[0]->SetSize({ 180,180 });
-			SelQuestSub[0]->SetColor({ 1,1,1,SelSubAlpha[0]});
-			SelQuestSub[1]->SetSize({ 100,100 });
-			SelQuestSub[1]->SetPosition({ 1190,300 });
-			SelQuestSub[1]->SetColor({ 1,1,1,SelSubAlpha[1] });
+		SelQuestSub[0]->SetSize({ 180,180 });
+		SelQuestSub[0]->SetColor({ 1,1,1,SelSubAlpha[0] });
+		SelQuestSub[1]->SetSize({ 100,100 });
+		SelQuestSub[1]->SetPosition({ 1190,300 });
+		SelQuestSub[1]->SetColor({ 1,1,1,SelSubAlpha[1] });
 		SelQuestSub[0]->Draw();
 		SelQuestSub[1]->Draw();
 	}
@@ -482,7 +482,7 @@ void SelectScene::Draw_SpriteBack() {
 			ButtonNav_Challenge_Cancel[i]->Draw();
 		}
 	}
-	
+
 }
 
 
@@ -616,9 +616,9 @@ void SelectScene::StateManager() {
 			m_Wide = false;
 			m_BirthTimer = {};
 		}
-	} else {	
-				m_Birth[SEVEN] = true;
-				m_BirthFinish[SEVEN] = true;		//ラスボスゾーンの出現
+	} else {
+		m_Birth[SEVEN] = true;
+		m_BirthFinish[SEVEN] = true;		//ラスボスゾーンの出現
 		bool temp[ObjNum] = {};
 		for (auto i = 0; i < TipsAct.size(); i++)
 			temp[i] = TipsAct[i];
