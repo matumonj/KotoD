@@ -128,9 +128,8 @@ void TitleSceneActor::FrontDraw() {
 	menu->Draw();
 	if (feedF)
 		Feed2::GetInstance()->Draw2();
-	if (SceneSave::GetInstance()->GetEndRoll()) {
+	
 		sceneChanger_->Draw();
-	}
 }
 //背面描画
 void TitleSceneActor::BackDraw(DirectXCommon* dxCommon) {
