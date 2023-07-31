@@ -12,7 +12,7 @@ void TitleSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 	dxCommon->SetFullScreen(true);
 	//オーディオ
 	if (!SceneSave::GetInstance()->GetEndRoll()) {
-		Audio::GetInstance()->LoopWave(AUDIO_TITLE, VolumManager::GetInstance()->GetBGMVolum() + 2.0f);
+		Audio::GetInstance()->LoopWave(AUDIO_TITLE, VolumManager::GetInstance()->GetBGMVolum() + 1.0f);
 	}
 	feed = new Feed();
 	sceneChanger_ = make_unique<SceneChanger>();
@@ -215,7 +215,7 @@ void TitleSceneActor::SceneSelect() {
 		m_CreditSize = { Ease(In,Cubic,0.5f,m_CreditSize.x,1280.0f),
 		Ease(In,Cubic,0.5f,m_CreditSize.y,720.0f), };
 
-		if (input->TriggerButton(input->BACK)) {
+		if (input->TriggerButton(input->START)) {
 			m_Credit = false;
 		}
 	}

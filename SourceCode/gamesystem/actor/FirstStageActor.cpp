@@ -251,20 +251,25 @@ void FirstStageActor::IntroUpdate(DebugCamera* camera)
 	messagewindow_->Display();
 	//テキスト関係
 	if (m_AppTimer == 1) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_Cap::CAP1);
 	} else if (m_AppTimer == 150) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_Cap::SUTO1);
 		sutopon_color_ = { 1.f,1.f,1.f,1.f };
 		text_->ChangeColor({ 0.f,1.f,1.f,1.f });
 	} else if (m_AppTimer == 300) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_Cap::CAP2);
 		sutopon_color_ = { 1.f,1.f,1.f,0.5f };
 		text_->ChangeColor({ 1.f,1.f,1.f,1.f });
 	} else if (m_AppTimer == 400) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_Cap::SUTO2);
 		sutopon_color_ = { 1.f,1.f,1.f,1.f };
 		text_->ChangeColor({ 0.f,1.f,1.f,1.f });
 	} else if (m_AppTimer == 500) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_Cap::CAP3);
 		text_->ChangeColor({ 1.f,1.f,1.f,1.f });
 	} else if (m_AppTimer >= 600) {
@@ -380,20 +385,24 @@ void FirstStageActor::TalkUpdate()
 	text_->Display();
 	messagewindow_->Invisible(true);
 	if (m_AppTimer == 2) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_First::CHARGE1);
 		sutopon_color_ = { 1.f,1.f,1.f,0.5f };
 		text_->ChangeColor({ 1.f,1.f,1.f,1.f });
 	} else if (m_AppTimer == 150) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_First::CHARGE2);
 		sutopon_color_ = { 1.f,1.f,1.f,0.5f };
 		girl_color_ = { 1.3f,1.3f,1.3f,1.f };
 		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 	} else if (m_AppTimer == 300) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_First::CHARGE3);
 		text_->ChangeColor({ 0.f,1.f,1.f,1.f });
 		sutopon_color_ = { 1.f,1.f,1.f,1.f };
 		girl_color_ = { 1.3f,1.3f,1.3f,0.5f };
 	} else if (m_AppTimer == 450) {
+		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 		text_->SelectText(TextManager::Name_First::CHARGE4);
 	} else if (m_AppTimer == 625) {
 		quarter_hp_ = -100.f;
