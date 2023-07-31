@@ -13,7 +13,7 @@ void (FirstBoss::* FirstBoss::stateTable[])() = {
 	&FirstBoss::RockOnAttack,
 	&FirstBoss::DropAttack,
 	&FirstBoss::Hit,
-	&FirstBoss::Invincible,
+	&FirstBoss::Big,
 };
 
 FirstBoss::FirstBoss()
@@ -75,6 +75,7 @@ void FirstBoss::Pause()
 {
 }
 
+
 void FirstBoss::Action()
 {
 	if (statereset_) {
@@ -86,6 +87,7 @@ void FirstBoss::Action()
 	if (m_HP < half_hp_) {
 		m_Magnification = 0.3f;
 		e_scl = { 25.3f,25.3f,25.3f };
+		_charstate = CharaState::STATE_BIG;
 	}
 
 	if (bounce_ == Bounce::SOURCE) {
@@ -611,9 +613,6 @@ void FirstBoss::Areia()
 	m_TexRot.y = Helper::GetInstance()->DirRotation(m_Position, e_pos, -PI_180);
 }
 
-void FirstBoss::Invincible()
-{
-}
 
 void FirstBoss::FractionRockOn()
 {
@@ -621,6 +620,24 @@ void FirstBoss::FractionRockOn()
 	jumpCount = 3;
 	s_pos = m_Position;
 	e_pos = { m_Position.x + sinf(RottoPlayer) * -(20.f * (float)jumpCount),0.f, m_Position.z + cosf(RottoPlayer) * -(20.0f * (float)jumpCount) };
+}
+
+void FirstBoss::Big()
+{
+
+	XMFLOAT3 s_scl = m_Scale;
+	bigtimer_ += 1.0f / 60;
+	Helper::GetInstance()->Clamp(bigtimer_, 0.0f, 1.0f);
+	m_Scale = {
+	Ease(In, Quart, bigtimer_, s_scl.x, e_scl.x),
+	Ease(In, Quart, bigtimer_, s_scl.y, e_scl.y),
+	Ease(In, Quart, bigtimer_, s_scl.z, e_scl.z),
+	};
+
+	if (bigtimer_ == 1) {
+		half_hp_ = -100;
+		_charstate = CharaState::STATE_INTER;
+	}
 }
 
 

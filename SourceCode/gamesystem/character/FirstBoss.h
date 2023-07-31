@@ -90,25 +90,17 @@ private:
 
 	void CreateFraction(const XMFLOAT3& DropPos,const XMFLOAT3& BossPos);
 
-
 	void Bounce();
 
 	void Areia();
-	// INVINCIBLE
-	void Invincible();
 
 	void FractionRockOn();
 
-	void FractionAttack();
-
-	void Crush();
+	void Big();
 private:
-	//CSV読み込み系
-	void CSVLoad();
+
 	//死んだときのパーティクル
 	void DeathParticle();
-
-	
 public:
 
 	bool  InterChange() { if (_charstate == CharaState::STATE_INTER) { true; } }
@@ -135,7 +127,7 @@ private:
 		STATE_ROCKON,
 		STATE_RAND,
 		STATE_HIT,
-		STATE_INVINCIBLE,
+		STATE_BIG,
 		STATE_END
 	}_charstate;
 
@@ -254,6 +246,8 @@ private:
 
 	float returntimer_ = 0.f;
 	float returnrot_ = 0.f;
+
+	float bigtimer_ = 0.f;
 
 	XMFLOAT3 e_scl{ 15.3f,15.3f,15.3f };
 };
