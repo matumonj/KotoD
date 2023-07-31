@@ -44,10 +44,10 @@ void ModelManager::SecondInitialize()
 
 	LoadModel(NOTE, "NOTE");
 	LoadModel(UPBOX, "upbox");
-	LoadModel(WIDTH1, "width1");
-	LoadModel(WIDTH2, "width2");
-	LoadModel(WIDTH3, "width3");
-	LoadModel(WIDTH4, "width4");
+	LoadModel(WIDTH1, "CD");
+	LoadModel(WIDTH2, "CD");
+	LoadModel(WIDTH3, "CD");
+	LoadModel(WIDTH4, "CD");
 	LoadModel(DOWNBOX, "downbox");
 
 	LoadModel(GLASS1, "glass1");
