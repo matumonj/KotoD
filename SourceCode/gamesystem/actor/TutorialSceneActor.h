@@ -116,6 +116,8 @@ private:
 	float BosscircleShadowAtten[3] = { 0.5f,0.6f,0.0f };
 	float BosscircleShadowFactorAngle[2] = { 0.0f, 2.0f };
 	bool skip = false;
+
+	int number = 0;
 private://便利関数
 	bool Clear(bool mission,int waitTimerMax);
 

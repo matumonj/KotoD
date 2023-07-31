@@ -47,7 +47,7 @@ void TutorialSceneActor::IntroState() {
 	}
 }
 void TutorialSceneActor::MoveState() {
-	text_->SetConversation(TextManager::SETUMEI1);
+	text_->SetConversation(TextManager::NONE);
 
 	//メガホンobj更新
 	sutepon->Update();
@@ -157,11 +157,12 @@ void TutorialSceneActor::TextCatchFollowState() {
 		nowstate_ = state::CATCHFOLLOW;
 		text_->SetConversation(TextManager::NONE);
 		conversation = 0;
+		number = 1;
 	}
 
 }
 void TutorialSceneActor::CatchFollowState() {
-	text_->SetConversation(TextManager::SETUMEI2);
+	text_->SetConversation(TextManager::NONE);
 	loadobj->TutorialUpdate();
 	firstEnemy->SetIsStop(true);
 	enemymanager->TutorialUpdate(0);
@@ -195,10 +196,11 @@ void TutorialSceneActor::TextShotState() {
 		nowstate_ = state::SHOT;
 		text_->SetConversation(TextManager::NONE);
 		conversation = 0;
+		number = 2;
 	}
 }
 void TutorialSceneActor::ShotState() {
-	text_->SetConversation(TextManager::SETUMEI3);
+	text_->SetConversation(TextManager::NONE);
 	loadobj->TutorialUpdate();
 	enemymanager->TutorialUpdate(0);
 	Player::GetInstance()->SetCanShot(true);
@@ -249,11 +251,12 @@ void TutorialSceneActor::TextCatchSeachState() {
 		nowstate_ = state::CATCHSEACH;
 		text_->SetConversation(TextManager::NONE);
 		conversation = 0;
+		number = 3;
 	}
 }
 void TutorialSceneActor::CatchSeachState() {
 	Player::GetInstance()->SetCanShot(true);
-	text_->SetConversation(TextManager::SETUMEI4);
+	text_->SetConversation(TextManager::NONE);
 	loadobj->TutorialUpdate();
 	enemymanager->TutorialUpdate(0);
 
@@ -291,6 +294,7 @@ void TutorialSceneActor::TextClearState() {
 		s_targetpos = camerawork->GetTarget();
 		text_->SetConversation(TextManager::NONE);
 		conversation = 0;
+		number = 4;
 	}
 }
 void TutorialSceneActor::SpawnAllEnemyState() {
@@ -598,6 +602,8 @@ void TutorialSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Li
 	(this->*stateTable[static_cast<size_t>(nowstate_)])();
 	//各クラス更新
 	if (static_cast<int>(nowstate_) % 2 == 1) {
+		ui->SetNowNumber(number);
+		ui->SetumeiUpdate();
 		ui->Update();
 		Player::GetInstance()->Update();
 	}

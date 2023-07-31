@@ -99,6 +99,11 @@ void ImageManager::SecondLoad2D()
 	IKESprite::LoadTexture(SELQUEStsuB, L"Resources/2d/sceneback/dokosub.png");
 	IKESprite::LoadTexture(CLEARLOGO, L"Resources/2d/sceneback/clearLogo.png");
 	IKESprite::LoadTexture(FIN, L"Resources/2d/sceneback/fin.png");
+
+	IKESprite::LoadTexture(DESCRIPTION1, L"Resources/2d/objicon/tutorialMission1.png");
+	IKESprite::LoadTexture(DESCRIPTION2, L"Resources/2d/objicon/tutorialMission2.png");
+	IKESprite::LoadTexture(DESCRIPTION3, L"Resources/2d/objicon/tutorialMission3.png");
+	IKESprite::LoadTexture(DESCRIPTION4, L"Resources/2d/objicon/tutorialMission4.png");
 }
 
 //テクスチャの読み込み
