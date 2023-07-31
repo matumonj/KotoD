@@ -882,6 +882,7 @@ void Player::DarkAppearUpdate(int Timer) {
 	}
 	index = 15;
 	fbxmodels->GetBoneIndexMat(index, skirtmat);
+	skirtobj->SetColor({ 0.7f,0.7f,0.7f,1.0f });
 	skirtobj->FollowUpdate(skirtmat);
 	playerattach->DarkAppear(Timer);
 	//基礎パラメータ設定
@@ -938,6 +939,7 @@ void Player::LastAppearUpdate(int Timer) {
 	}
 	index = 15;
 	fbxmodels->GetBoneIndexMat(index, skirtmat);
+	skirtobj->SetColor({ 0.7f,0.7f,0.7f,1.0f });
 	skirtobj->FollowUpdate(skirtmat);
 	playerattach->AppearUpdate(Timer);
 	//基礎パラメータ設定
@@ -974,6 +976,7 @@ void Player::LastDeadUpdate(int Timer) {
 	}
 	index = 15;
 	fbxmodels->GetBoneIndexMat(index, skirtmat);
+	skirtobj->SetColor({ 0.7f,0.7f,0.7f,1.0f });
 	skirtobj->FollowUpdate(skirtmat);
 	playerattach->LastDeadUpdate(Timer);
 	SetParam();
