@@ -97,10 +97,10 @@ void InterBoss::CollideBul(vector<InterBullet*> bullet,Type type)
 				_bullet->SetAlive(false);
 				//弾の大きさによって与えるダメージが違う
 				if (_bullet->GetPowerState() == POWER_NONE) {
-					m_HP -=20* _bullet->GetPower() * m_Magnification;
+					m_HP -= _bullet->GetPower() * m_Magnification;
 				}
 				else {
-					m_HP -= 20* _bullet->GetPower();
+					m_HP -= _bullet->GetPower();
 				}
 				if (m_HP <1.f) {
 					if (SceneName == "FIRSTSTAGE")
