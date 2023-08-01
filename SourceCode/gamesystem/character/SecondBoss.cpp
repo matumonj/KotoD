@@ -35,7 +35,7 @@ bool SecondBoss::Initialize() {
 
 	damageara.reset(IKETexture::Create(ImageManager::DAMAGEAREA, { 0,0,0 }, { 0.5f,0.5f,0.5f }, { 1,1,1,1 }));
 	damageara->TextureCreate();
-	m_Radius = 12.0f;
+	m_Radius = 10.0f;
 
 	//優先度
 	CirclePriority = static_cast<int>(std::any_cast<double>(LoadCSV::LoadCsvParam("Resources/csv/chara/boss/Second/Secondboss.csv", "CPriority")));
@@ -141,6 +141,7 @@ void SecondBoss::Action() {
 	/*^^^^当たり判定^^^^*/
 	//弾とボスの当たり判定
 		vector<InterBullet*> _playerBulA = Player::GetInstance()->GetBulllet_attack();
+		if(m_Scale.x>=0.5f|| m_Scale.y >= 0.5f|| m_Scale.z>= 0.5f)
 		CollideBul(_playerBulA, Type::CIRCLE);
 	}
 	//OBJのステータスのセット
