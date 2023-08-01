@@ -46,10 +46,10 @@ void TitleSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 	}
 
 	PlayPostEffect = true;
+	//SelectScene::GetIns()->SetTitF(true);
 
 	camerawork->SetCameraState(CAMERA_TITLE);
 	camerawork->Update(camera);
-
 	//各クラス
 	Player::GetInstance()->LoadResource();
 	Player::GetInstance()->InitState({ 0.0f,-2.0f,-30.0f });
@@ -58,6 +58,7 @@ void TitleSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 //更新
 void TitleSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
 	//セレクト
+	SceneSave::GetInstance()->SetTitF(true);
 	SceneSelect();
 	Input* input = Input::GetInstance();
 	if (feedF) {
@@ -71,6 +72,7 @@ void TitleSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Light
 	ParticleEmitter::GetInstance()->FireEffect(100, { 0.0f,23.0f,0.0f }, 5.0f, 0.0f, { 1.0f,0.5f,0.0f,0.5f }, { 1.0f,0.5f,0.0f,0.5f });
 	//パーティクル更新
 	ParticleEmitter::GetInstance()->Update();
+	
 
 	postEffect->SetCloseRad(SelectScene::GetIns()->GetCloseIconRad());
 	if (SelectScene::GetIns()->GetPedestal() != nullptr) {

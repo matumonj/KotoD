@@ -393,6 +393,13 @@ void FiveBoss::AppearAction()
 	} else {
 
 	}
+	skirtobj->SetScale({ 3,3,3 });
+
+	index = 13;
+	fbxmodel->GetBoneIndexMat(index, skirtmat);
+	skirtobj->SetRotation({ 0,0,90 });
+	skirtobj->FollowUpdate(skirtmat);
+	skirtobj->SetColor(m_Color);
 
 	knock->AppearUpdate(m_AppearTimer);
 	//‚Ç‚Á‚¿Žg‚¦‚Î‚¢‚¢‚©•ª‚©‚ç‚È‚©‚Á‚½‚©‚ç•Û—¯

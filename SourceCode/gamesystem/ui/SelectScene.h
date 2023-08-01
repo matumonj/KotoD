@@ -20,7 +20,9 @@ public:
 	static SelectScene* GetIns();
 	SelectScene() {};
 	~SelectScene() {};
-
+	bool titf;
+	void SetTitF(bool f) { titf = f; }
+	bool GetTitF() { return titf; }
 	enum Stage {
 		FIRST,
 		SECOND,
@@ -138,6 +140,7 @@ private:
 	float SclingSpeed = 55.f, CorrSpeed = 0.48f;
 
 	float MaxScl, MaxSpeed;
+	
 	void RotPedestal();
 	void ChangeEffect(std::string name, Stage stage, UINT iconnum);
 public:

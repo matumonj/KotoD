@@ -22,6 +22,8 @@ void SelectSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, 
 	PlayPostEffect = true;
 	//パーティクル全削除
 	ParticleEmitter::GetInstance()->AllDelete();
+	SceneSave::GetInstance()->SetTitF(false);
+	//SceneSave::GetInstance()->SetTitF(true);
 
 	//FirstStageクリアしたら初期化切る(各シーンごとにResetParamで)
 	if(!SceneSave::GetInstance()->GetClearFlag(SeceneCategory::kFirstStage))

@@ -46,7 +46,7 @@ bool SceneSave::AllClear() {
 		}
 	}
 
-	if (m_ClearCount == 7) {
+	if (m_ClearCount == 1) {
 		return true;
 	}
 	else {

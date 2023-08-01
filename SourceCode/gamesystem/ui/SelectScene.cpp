@@ -44,11 +44,13 @@ void SelectScene::ResetParama() {
 	StageObjs[FIVE]->SetScale({ 0.2f,0.2f,0.2f });
 	StageObjs[TITLE]->SetScale({ 8.2f,5.2f,8.2f });
 	TrigerSelect = NOINP;
-	CloseF = false;
 
-	closeScl = 6500.f;
-	closeRad = 1500.f;
-
+	if (!SceneSave::GetInstance()->GetTitF()) {
+		CloseF = false;
+		titf = false;
+		closeScl = 6500.f;
+		closeRad = 1500.f;
+	}
 
 	for (auto i = 0; i < ObjNum; i++) {
 		TipsAct[i] = false;
@@ -252,6 +254,7 @@ void SelectScene::Upda() {
 				//JumpS = true;
 		}
 	}
+
 	CloseIconView(CloseF);
 	Helper::GetInstance()->Clamp(closeScl, 0.f, MaxScl);
 	Helper::GetInstance()->Clamp(closeRad, 0.f, 1500.f);
@@ -260,24 +263,24 @@ void SelectScene::Upda() {
 
 	//Selectは常時出す
 	m_Birth[TITLE] = true;
-	for (int i = 0; i < MAX; i++) {
-		if (IconColor[i] < 1.f) { continue; }
-		if (Input::GetInstance()->TriggerButton(Input::B) && (m_Birth[i])) {
-			JumpK = true;
-			JumpS = true;
-			TipsAct[i] = true;
+		for (int i = 0; i < MAX; i++) {
+			if (IconColor[i] < 1.f) { continue; }
+			if (Input::GetInstance()->TriggerButton(Input::B) && (m_Birth[i])) {
+				JumpK = true;
+				JumpS = true;
+				TipsAct[i] = true;
+			}
 		}
-	}
 
-	ChangeEffect("FIRSTSTAGE", Stage::FIRST, FIRST);
-	ChangeEffect("SECONDSTAGE", Stage::SECOND, SECOND);
-	ChangeEffect("FOURTHSTAGE", Stage::FOUR, FOUR);
-	ChangeEffect("THIRDSTAGE", Stage::THIRD, THIRD);
-	ChangeEffect("FIVESTAGE", Stage::SIX, SIX);
-	ChangeEffect("SIXSTAGE", Stage::FIVE, FIVE);
-	ChangeEffect("SEVENSTAGE", Stage::SEVEN, SEVEN);
-	ChangeEffect("TITLE", Stage::TITLE, TITLE);
-
+		ChangeEffect("FIRSTSTAGE", Stage::FIRST, FIRST);
+		ChangeEffect("SECONDSTAGE", Stage::SECOND, SECOND);
+		ChangeEffect("FOURTHSTAGE", Stage::FOUR, FOUR);
+		ChangeEffect("THIRDSTAGE", Stage::THIRD, THIRD);
+		ChangeEffect("FIVESTAGE", Stage::SIX, SIX);
+		ChangeEffect("SIXSTAGE", Stage::FIVE, FIVE);
+		ChangeEffect("SEVENSTAGE", Stage::SEVEN, SEVEN);
+		ChangeEffect("TITLE", Stage::TITLE, TITLE);
+	
 	for (int i = 0; i < MAX; i++) {
 		if (closeScl >= MaxScl - 2000.f) {
 			BossIcon[i]->SetAnchorPoint({ 0.5f,0.5f });
@@ -542,6 +545,8 @@ void SelectScene::ChangeEffect(std::string name, Stage stage, UINT iconnum) {
 		for (auto i = 0; i < ObjNum; i++)
 			OldObjAngle[i] = StageObjRotAngle[i];
 		Audio::GetInstance()->StopWave(AUDIO_LOAD);
+		///ResetParama();
+		titf = false;
 		SceneManager::GetInstance()->ChangeScene(name);
 		CloseF = false;
 	}
@@ -658,10 +663,14 @@ void SelectScene::BirthParticle() {
 	if (!m_Birth[TITLE] && !m_BirthFinish[TITLE]) {
 		//ParticleEmitter::GetInstance()->SelectEffect(l_Life[TITLE], { StageObjPos[TITLE].x,StageObjPos[TITLE].y - 3.f,StageObjPos[TITLE].z }, 1.0f, 0.0f, { 0.8f,0.5f,0.4f,1.0f }, { 1.0f,1.0f,1.0f,1.0f });
 	}
-	if (m_SelectState != SELECT_LAST) {
+
+	if (m_SelectState == SELECT_LAST) {
 		l_Life[SEVEN] = 50;
 		if (SceneSave::GetInstance()->GetClearFlag(SeceneCategory::kSevenStage)) {
+
 			ParticleEmitter::GetInstance()->SelectEffect(l_Life[SEVEN], { StageObjPos[SEVEN].x,StageObjPos[SEVEN].y - 3.f,StageObjPos[SEVEN].z }, 1.0f, 0.0f, { 0.8f,0.5f,0.4f,1.0f }, { 1.0f,1.0f,1.0f,1.0f });
+
+			m_SelectState = SELECT_FIRST;
 		}
 	}
 }

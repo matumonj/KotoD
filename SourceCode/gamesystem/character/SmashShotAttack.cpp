@@ -153,7 +153,10 @@ void SmashShotAttack::Phase_Shot()
 			ImpactTexPos[i].x = Player::GetInstance()->GetPosition().x + (float)(l_RandPosX(mt));
 			ImpactTexPos[i].z = Player::GetInstance()->GetPosition().z + (float)(l_RandPosZ(mt));
 		}
-		ImpactTexPos[0] = { Player::GetInstance()->GetPosition() };
+		ImpactTexPos[0].x = Player::GetInstance()->GetPosition().x;
+		ImpactTexPos[0].z = Player::GetInstance()->GetPosition().z;
+
+		//ImpactTexPos[0] = { Player::GetInstance()->GetPosition() };
 		_phase = IMPACT;
 	}
 

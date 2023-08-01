@@ -31,11 +31,14 @@ public:
 
 	void ImGuiDraw();
 
+	void SetTitF(bool f) { TitF = f; }
+	bool GetTitF() { return TitF; }
 public:
 	bool GetEndRoll() { return m_EndRoll; }
 
 	void SetEndRoll(const bool EndRoll) { m_EndRoll = EndRoll; }
 private:
+	bool TitF;
 
 	static bool m_StageClear[(size_t)kMaxStage];
 
