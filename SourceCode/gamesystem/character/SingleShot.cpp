@@ -126,6 +126,7 @@ void SingleShot::Phase_Idle()
 	ShotSize = boss->GetGhostSize();
 
 	if (RotEaseTime >= 1.f) {
+		boss->GetFbxobj()->StopAnimation();
 
 		boss->AnimationControl(InterBoss::AnimeNames::SHOT, false, 1);
 
@@ -135,6 +136,8 @@ void SingleShot::Phase_Idle()
 }
 void SingleShot::Phase_Shot()
 {
+	//boss->AnimationControl(InterBoss::AnimeNames::SHOT, false, 1);
+
 
 	RotEaseTime = 0.f;
 

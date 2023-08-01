@@ -262,12 +262,13 @@ void FiveBoss::Action()
 	//single->Upda();
 	if (shot->GetPhase() == ShotAttack::Phase::END) {
 		//’ÊíUŒ‚
-		if (shot->GetCanRand() > noAction && GhostSize > 0 && GhostSize < 4)
+		if (shot->GetCanRand() > 0&& GhostSize > 0 && GhostSize < 4)
 		{
 			shot->SetActionEnd(true);
 			shot->SetIdleDam(false);
 			single->SetActionEnd(false);
-			AnimationControl(InterBoss::AnimeNames::SHOT, false, 1);
+			//fbxmodel->StopAnimation();
+			//AnimationControl(InterBoss::AnimeNames::SHOT, false, 1);
 			_aPhase = ATTACK_SINGLESHOT;
 		}
 		if (shot->GetCanRand() > noAction && GhostSize == 4)
