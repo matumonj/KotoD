@@ -394,6 +394,7 @@ void FourthBoss::UltimateUpdate() {
 	if (limitHp >= m_HP && !isShutter && feedTimer == 0.0f) {
 		m_HP = limitHp;
 		phase = commandState::Explosion;
+		stage_move_count = 1;
 		ActionTimer = 0;
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Explo.wav", VolumManager::GetInstance()->GetSEVolum() * 1.3f);
 		return;
@@ -406,6 +407,9 @@ void FourthBoss::UltimateUpdate() {
 
 	if (stage_move_count < stage_move_max) {
 		if (ActionTimer >= stage_move * stage_move_count) {
+			if (stage_move_count == 2) {
+				isHyperSearch = true;
+			}
 			if (!isShutter) {
 				ChangePos2Rand();
 				isShutter = true;
@@ -423,7 +427,6 @@ void FourthBoss::UltimateUpdate() {
 	}
 	if (ActionTimer >= ActionTimerMax[(size_t)phase] && !isShutter) {
 		isShutter = true;
-		isHyperSearch = true;
 	}
 	if (isHyperSearch) { return; }
 	if (!isShutter) { return; }
@@ -432,6 +435,7 @@ void FourthBoss::UltimateUpdate() {
 		if (ShutterFeed()) {
 			ShutterReset();
 			ActionTimer = 0;
+			stage_move_count = 1;
 			phase = commandState::WaitCommand;
 		}
 	}

@@ -94,8 +94,9 @@ void Ghost::Update() {
 }
 //描画
 void Ghost::Draw(DirectXCommon* dxCommon) {
-	//if (!m_Alive) { return; }
-	Obj_Draw();
+	if (m_Alive) {
+		Obj_Draw();
+	}
 
 	//攻撃の音符
 	for (AttackNote* newnote : attacknotes) {
@@ -175,8 +176,8 @@ void Ghost::GhostCollision(const XMFLOAT3& pos) {
 }
 //ゴースト生成
 void Ghost::BirthGhost() {
-	if (!VerseCheck()) { return; }
 	if (m_Alive) { return; }
+	if (!VerseCheck()) { return; }
 	m_ResPornTimer++;
 	//描画バグ起きるから先に座標セット
 	if (m_ResPornTimer == 20) {
@@ -432,10 +433,11 @@ void Ghost::HyperJack() {
 	if (m_Position.x <= -55.0f || m_Position.x >= 65.0f ||
 		m_Position.z <= -60.0f || m_Position.z >= 60.0f) {
 		m_Alive = false;
-		isVerse = false;
-		m_VerseCureTimer = 180;
-		m_Scale = { 0.0f,0.0f,0.0f };
 		m_IsHyperRefer = false;
+		m_IsRefer = false;
+		m_Scale = { 0.0f,0.0f,0.0f };
+		isVerse = false;
+		m_VerseCureTimer = 120;
 		_charaState = CharaState::STATE_NONE;
 	}
 }
