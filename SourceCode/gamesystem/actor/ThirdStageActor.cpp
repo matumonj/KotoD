@@ -26,6 +26,8 @@ void ThirdStageActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 	backScreen_ = IKESprite::Create(ImageManager::PLAY, { 0,0 });
 	backScreen_->SetAddOffset(-0.0005f);
 	backScreen_->SetSize({ 1280.0f,720.0f });
+	SkipUI = IKESprite::Create(ImageManager::SKIPUI, { 10,10 }, { 1.2f,1.2f,1.2f,1.f });
+
 	//シーンチェンジャー
 	sceneChanger_ = make_unique<SceneChanger>();
 	sceneChanger_->Initialize();
@@ -172,6 +174,9 @@ void ThirdStageActor::FrontDraw(DirectXCommon* dxCommon) {
 	IKESprite::PreDraw();
 	if (m_SceneState == SceneState::MainState && !camerawork->GetFeedEnd()) {
 		ui->Draw();
+	}
+	if (m_SceneState == SceneState::IntroState) {
+		SkipUI->Draw();
 	}
 	if (m_SceneState == SceneState::IntroState) {
 		if ((camerawork->GetAppearType() == APPEAR_SEVEN) || (camerawork->GetAppearType() == APPEAR_EIGHT)) {

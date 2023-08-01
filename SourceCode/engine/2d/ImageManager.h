@@ -97,7 +97,8 @@ public:
 		DESCRIPTION1,
 		DESCRIPTION2,
 		DESCRIPTION3,
-		DESCRIPTION4
+		DESCRIPTION4,
+		SKIPUI,
 	};
 	//テクスチャの名前
 	enum tex2dName

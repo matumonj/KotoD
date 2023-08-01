@@ -32,6 +32,7 @@ private:
 	int textT;
 	unique_ptr<BossText> text_ = nullptr;
 	unique_ptr<IKESprite> backScreen_ = nullptr;
+	unique_ptr<IKESprite> SkipUI = nullptr;
 	unique_ptr<MessageWindow> messagewindow_ = nullptr;
 
 	//丸影(ボス)

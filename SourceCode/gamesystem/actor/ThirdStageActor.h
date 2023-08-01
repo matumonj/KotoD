@@ -24,6 +24,7 @@ private:
 	void FinishUpdate(DebugCamera* camera)override;		//撃破シーン
 
 	unique_ptr<BossText> text_;
+	unique_ptr<IKESprite> SkipUI = nullptr;
 	unique_ptr<IKESprite> backScreen_ = nullptr;
 private:
 
