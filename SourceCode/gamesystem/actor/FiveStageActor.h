@@ -32,6 +32,7 @@ private:
 	int textT;
 	unique_ptr<MessageWindow> messagewindow_;
 	unique_ptr<BossText> text_;
+	unique_ptr<IKESprite> SkipUI = nullptr;
 	unique_ptr<IKESprite> backScreen_ = nullptr;
 
 	//ä€âe(É{ÉX)

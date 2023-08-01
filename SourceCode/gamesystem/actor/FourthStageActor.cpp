@@ -30,6 +30,8 @@ void FourthStageActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, 
 	backScreen_->SetAddOffset(-0.0005f);
 	backScreen_->SetSize({ 1280.0f,720.0f });
 
+	SkipUI = IKESprite::Create(ImageManager::SKIPUI, { 10,10 }, { 1.2f,1.2f,1.2f,1.f });
+
 	m_Model = ModelManager::GetInstance()->GetModel(ModelManager::Food);
 	apple = make_unique<IKEObject3d>();
 	apple->Initialize();
@@ -183,6 +185,11 @@ void FourthStageActor::BackDraw(DirectXCommon* dxCommon) {
 	if (m_SceneState == SceneState::MainState && !camerawork->GetFeedEnd()) {
 		IKESprite::PreDraw();
 		ui->Draw();
+		IKESprite::PostDraw();
+	}
+	if (m_SceneState == SceneState::IntroState) {
+		IKESprite::PreDraw();
+		SkipUI->Draw();
 		IKESprite::PostDraw();
 	}
 	if (isVisible) {

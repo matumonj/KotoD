@@ -104,6 +104,7 @@ void ImageManager::SecondLoad2D()
 	IKESprite::LoadTexture(DESCRIPTION2, L"Resources/2d/objicon/tutorialMission2.png");
 	IKESprite::LoadTexture(DESCRIPTION3, L"Resources/2d/objicon/tutorialMission3.png");
 	IKESprite::LoadTexture(DESCRIPTION4, L"Resources/2d/objicon/tutorialMission4.png");
+	IKESprite::LoadTexture(SKIPUI, L"Resources/2d/objicon/skipUI.png");
 }
 
 //テクスチャの読み込み

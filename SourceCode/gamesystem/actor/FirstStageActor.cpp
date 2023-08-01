@@ -9,8 +9,7 @@
 #include "SelectScene.h"
 #include "HitStop.h"
 
-void FirstStageActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup)
-{
+void FirstStageActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
 	dxCommon->SetFullScreen(true);
 	//共通の初期化
 	BaseInitialize(dxCommon);
@@ -27,6 +26,8 @@ void FirstStageActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 	backScreen_ = IKESprite::Create(ImageManager::PLAY, { 0,0 });
 	backScreen_->SetAddOffset(-0.0005f);
 	backScreen_->SetSize({ 1280.0f,720.0f });
+
+	SkipUI = IKESprite::Create(ImageManager::SKIPUI, { 10,10 }, { 1.2f,1.2f,1.2f,1.f });
 	//シーンチェンジャー
 	sceneChanger_ = make_unique<SceneChanger>();
 	sceneChanger_->Initialize();
@@ -77,12 +78,10 @@ void FirstStageActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, L
 	girl_color_ = { 1.3f,1.3f,1.3f,0.5f };
 }
 
-void FirstStageActor::Finalize()
-{
+void FirstStageActor::Finalize() {
 }
 
-void FirstStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup)
-{
+void FirstStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
 	//関数ポインタで状態管理
 	if (menu->Pause()) {
 		menu->Update();
@@ -126,8 +125,7 @@ void FirstStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Light
 	HitStop::GetInstance()->Update();
 }
 
-void FirstStageActor::Draw(DirectXCommon* dxCommon)
-{
+void FirstStageActor::Draw(DirectXCommon* dxCommon) {
 	//描画方法
 	//ポストエフェクトをかけるか
 	if (PlayPostEffect) {
@@ -138,8 +136,8 @@ void FirstStageActor::Draw(DirectXCommon* dxCommon)
 
 		dxCommon->PreDraw();
 		postEffect->Draw(dxCommon->GetCmdList());
-	/*	postEffect->ImGuiDraw();
-		camerawork->ImGuiDraw();*/
+		/*	postEffect->ImGuiDraw();
+			camerawork->ImGuiDraw();*/
 		dxCommon->PostDraw();
 	} else {
 		postEffect->PreDrawScene(dxCommon->GetCmdList());
@@ -153,8 +151,7 @@ void FirstStageActor::Draw(DirectXCommon* dxCommon)
 	}
 }
 
-void FirstStageActor::FrontDraw(DirectXCommon* dxCommon)
-{
+void FirstStageActor::FrontDraw(DirectXCommon* dxCommon) {
 
 	if (tolk_F == true) {
 		IKESprite::PreDraw();
@@ -176,6 +173,9 @@ void FirstStageActor::FrontDraw(DirectXCommon* dxCommon)
 			ui->Draw();
 		}
 	}
+	if (m_SceneState == SceneState::IntroState) {
+		SkipUI->Draw();
+	}
 	IKESprite::PostDraw();
 	ClearText::GetInstance()->Draw();
 	menu->Draw();
@@ -186,8 +186,7 @@ void FirstStageActor::FrontDraw(DirectXCommon* dxCommon)
 	IKESprite::PostDraw();
 }
 
-void FirstStageActor::BackDraw(DirectXCommon* dxCommon)
-{
+void FirstStageActor::BackDraw(DirectXCommon* dxCommon) {
 
 	if (tolk_F == true) {
 		IKESprite::PreDraw();
@@ -215,8 +214,7 @@ void FirstStageActor::BackDraw(DirectXCommon* dxCommon)
 	IKEObject3d::PostDraw();
 }
 
-void FirstStageActor::IntroUpdate(DebugCamera* camera)
-{
+void FirstStageActor::IntroUpdate(DebugCamera* camera) {
 	//演出スキップ
 	if (Input::GetInstance()->TriggerButton(Input::A)) {
 		camerawork->SetCameraSkip(true);
@@ -279,15 +277,13 @@ void FirstStageActor::IntroUpdate(DebugCamera* camera)
 	}
 }
 
-void FirstStageActor::MainUpdate(DebugCamera* camera)
-{
+void FirstStageActor::MainUpdate(DebugCamera* camera) {
 	Input* input = Input::GetInstance();
 	CheckHp();
 	TalkUpdate();
 	if (tolk_F != false) { return; }
 	//カメラワークのセット
-	if (enemymanager->BossDestroy())
-	{
+	if (enemymanager->BossDestroy()) {
 		Audio::GetInstance()->StopWave(AUDIO_BATTLE);
 		//フェード前
 		if (!camerawork->GetFeedEnd()) {
@@ -297,8 +293,7 @@ void FirstStageActor::MainUpdate(DebugCamera* camera)
 			Player::GetInstance()->DeathUpdate();
 		}
 		//フェード後
-		else
-		{
+		else {
 			m_DeathTimer++;
 			PlayPostEffect = false;
 			enemymanager->SetDeadThrow(false);
@@ -318,8 +313,7 @@ void FirstStageActor::MainUpdate(DebugCamera* camera)
 		}
 	}
 
-	else
-	{
+	else {
 		Player::GetInstance()->Update();
 	}
 
@@ -358,13 +352,11 @@ void FirstStageActor::MainUpdate(DebugCamera* camera)
 	ClearText::GetInstance()->Update();
 }
 
-void FirstStageActor::FinishUpdate(DebugCamera* camera)
-{
+void FirstStageActor::FinishUpdate(DebugCamera* camera) {
 	Input* input = Input::GetInstance();
 }
 
-void FirstStageActor::CheckHp()
-{
+void FirstStageActor::CheckHp() {
 	boss_hp_ = enemymanager->GetHp();
 	if (boss_hp_ <= quarter_hp_) {
 		if (isfirst) { return; }
@@ -376,8 +368,7 @@ void FirstStageActor::CheckHp()
 	}
 }
 
-void FirstStageActor::TalkUpdate()
-{
+void FirstStageActor::TalkUpdate() {
 	if (tolk_F != true) { return; }
 
 

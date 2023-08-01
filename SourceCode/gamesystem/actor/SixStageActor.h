@@ -50,6 +50,7 @@ private:
 	unique_ptr<MessageWindow> messagewindow_;
 	unique_ptr<BossText> text_;
 	unique_ptr<IKESprite> backScreen_ = nullptr;
+	unique_ptr<IKESprite> SkipUI = nullptr;
 
 	//丸影(ボス)
 	float BosscircleShadowDir[3] = { 0,-1,0 };
