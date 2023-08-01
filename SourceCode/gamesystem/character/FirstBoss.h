@@ -97,6 +97,8 @@ private:
 	void FractionRockOn();
 
 	void Big();
+
+	void Revert();
 private:
 
 	//死んだときのパーティクル
@@ -243,11 +245,15 @@ private:
 
 	bool movie = false;
 
+	bool returnflag = false;
 
 	float returntimer_ = 0.f;
 	float returnrot_ = 0.f;
 
+	float reverttimer_ = 0.f;
 	float bigtimer_ = 0.f;
+
+	float nowrot_ = 0.f;
 
 	XMFLOAT3 e_scl{ 15.3f,15.3f,15.3f };
 };
