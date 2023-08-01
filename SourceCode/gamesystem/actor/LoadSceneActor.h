@@ -41,7 +41,6 @@ private://ƒƒ“ƒo•Ï”
 	bool feedf=true;
 	//Loading
 	enum {
-		BackScreen,
 		text_L = 0,
 		text_O,
 		text_A,
@@ -51,6 +50,7 @@ private://ƒƒ“ƒo•Ï”
 		Sutopon_2,
 		Sutopon_3,
 		Sutopon_4,
+		BackScreen,
 		SpriteMax
 	};
 

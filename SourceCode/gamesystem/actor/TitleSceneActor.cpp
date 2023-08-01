@@ -193,6 +193,7 @@ void TitleSceneActor::SceneSelect() {
 			feedF = true;
 			SceneSave::GetInstance()->SetEndRoll(false);
 			if (_SelectType == NORMAL_SCENE) {
+				SceneSave::GetInstance()->AllReset();
 				s_Skip = false;
 			} else if (_SelectType == SELECT_SCENE) {
 				s_Skip = true;

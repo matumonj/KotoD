@@ -20,7 +20,6 @@ void LoadSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, Li
 	sceneChanger_ = make_unique<SceneChanger>();
 	sceneChanger_->Initialize();
 
-	m_Sprites[BackScreen] = IKESprite::Create(ImageManager::SELECT, { 0,0 });
 
 	for (int i = text_L; i <= text_I; i++) {
 		m_SpritesPos[i].x = (i + 1) * 100.0f;
@@ -45,6 +44,8 @@ void LoadSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, Li
 		m_Sprites[Sutopon_1 + i]->SetAnchorPoint({ 0.5f,0.5f });
 	}
 
+	m_Sprites[BackScreen] = IKESprite::Create(ImageManager::SELECT, { 0,0 });
+	m_Sprites[BackScreen]->SetSize({ 1280.0f,720.0f });
 	camerawork->SetCameraState(CAMERA_LOAD);
 }
 //更新
@@ -163,16 +164,18 @@ void LoadSceneActor::FinishUpdate(DebugCamera* camera) {
 
 	float frame = (float)m_LoadTimer / (float)LoadTimerMax;
 
-	for (int i = text_L; i < SpriteMax; i++) {
+	for (int i = text_L; i < BackScreen; i++) {
 
-		float rot = Ease(In, Quad, frame, 0, PI_360);
+		float rot = Ease(In,Quad, frame, 0, PI_360);
 		m_Sprites[i]->SetRotation(rot);
 	}
 }
 
 //背面描画
 void LoadSceneActor::BackDraw(DirectXCommon* dxCommon) {
-
+	IKESprite::PreDraw();
+	m_Sprites[BackScreen]->Draw();
+	IKESprite::PostDraw();
 
 }
 //ImGuiの描画

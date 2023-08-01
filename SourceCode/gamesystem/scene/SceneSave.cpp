@@ -58,10 +58,4 @@ bool SceneSave::AllClear() {
 }
 
 void SceneSave::ImGuiDraw() {
-	ImGui::Begin("Save");
-	ImGui::Text("m_ClearCount:%d", m_ClearCount);
-	for (auto i = 0; i < kMaxStage; i++) {
-		ImGui::Text("Clear[%d]:%d", i, m_StageClear[(size_t)i]);
-	}
-	ImGui::End();
 }
