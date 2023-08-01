@@ -78,7 +78,7 @@ RandomInterval,10
 *---------------------------*
 //落下した後のインターバル
 *---------------------------*
-RandomInterval,10
+RandomInterval,50
 *---------------------------*
 
 //動くときのインターバル
@@ -86,7 +86,7 @@ RandomInterval,10
 MoveInterVal,50
 
 //イカリの場合
-MoveInterVal2,10
+MoveInterVal2,20
 
 //動きを選択する時のインターバル
 ChoiceInterVal,20

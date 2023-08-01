@@ -27,6 +27,7 @@ private:
 	bool ShutterFeed();
 	void ShutterReset();
 private://メンバ変数
+	unique_ptr<IKESprite> SkipUI = nullptr;
 	unique_ptr<EndRollObj> endobj;
 	//ポストエフェクトの値
 	float m_Sepia = 0.0f;
