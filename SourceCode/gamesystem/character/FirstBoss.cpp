@@ -13,7 +13,7 @@ void (FirstBoss::* FirstBoss::stateTable[])() = {
 	&FirstBoss::RockOnAttack,
 	&FirstBoss::DropAttack,
 	&FirstBoss::Hit,
-	&FirstBoss::Invincible,
+	&FirstBoss::Big,
 };
 
 FirstBoss::FirstBoss()
@@ -75,6 +75,7 @@ void FirstBoss::Pause()
 {
 }
 
+
 void FirstBoss::Action()
 {
 	if (statereset_) {
@@ -84,8 +85,11 @@ void FirstBoss::Action()
 
 
 	if (m_HP < half_hp_) {
+		returnflag = true;
+		half_hp_ = -100;
 		m_Magnification = 0.3f;
-		e_scl = { 25.3f,25.3f,25.3f };
+		nowrot_ = m_Rotation.x;
+		_charstate = CharaState::STATE_BIG;
 	}
 
 	if (bounce_ == Bounce::SOURCE) {
@@ -205,7 +209,7 @@ void FirstBoss::EffecttexDraw(DirectXCommon* dxCommon)
 void FirstBoss::Draw(DirectXCommon* dxCommon)
 {
 	IKETexture::PreDraw2(dxCommon, AlphaBlendType);
-	if (Display == true&&m_HP>0) {
+	if (Display == true&&m_HP>0&&_charstate!=CharaState::STATE_BIG) {
 		tex->Draw();
 	}
 	IKETexture::PostDraw();
@@ -611,9 +615,6 @@ void FirstBoss::Areia()
 	m_TexRot.y = Helper::GetInstance()->DirRotation(m_Position, e_pos, -PI_180);
 }
 
-void FirstBoss::Invincible()
-{
-}
 
 void FirstBoss::FractionRockOn()
 {
@@ -621,6 +622,60 @@ void FirstBoss::FractionRockOn()
 	jumpCount = 3;
 	s_pos = m_Position;
 	e_pos = { m_Position.x + sinf(RottoPlayer) * -(20.f * (float)jumpCount),0.f, m_Position.z + cosf(RottoPlayer) * -(20.0f * (float)jumpCount) };
+}
+
+void FirstBoss::Big()
+{
+	Revert();
+
+	if (returnflag) { return; }
+	bigtimer_ += 1.0f / 60;
+	Helper::GetInstance()->Clamp(bigtimer_, 0.0f, 1.0f);
+	m_Scale = {
+	Ease(In, Quart, bigtimer_, S_scl.x, e_scl.x),
+	Ease(In, Quart, bigtimer_, S_scl.y, e_scl.y),
+	Ease(In, Quart, bigtimer_, S_scl.z, e_scl.z),
+	};
+
+
+	if (bigtimer_ == 1) {
+		_charstate = CharaState::STATE_INTER;
+	}
+}
+
+void FirstBoss::Revert()
+{
+	if (!returnflag) { return; }
+
+	XMFLOAT3 s_scl = m_Scale;
+	reverttimer_ += 1.0f / 60;
+	Helper::GetInstance()->Clamp(reverttimer_, 0.0f, 1.0f);
+	m_Scale = {
+	Ease(In, Quart, reverttimer_, s_scl.x, e_scl.x),
+	Ease(In, Quart, reverttimer_, s_scl.y, e_scl.y),
+	Ease(In, Quart, reverttimer_, s_scl.z, e_scl.z),
+	};
+
+	float s_rot = nowrot_;
+	float e_rot = 0.f;
+	m_Rotation = {
+		Ease(In, Quart, reverttimer_, s_rot, e_rot),
+		0,
+		0,
+	};
+
+	XMFLOAT3 s_pos = m_Position;
+	m_Position = {
+		s_pos.x,
+		Ease(In, Quart, reverttimer_, s_pos.y, e_pos.y),
+		s_pos.z,
+	};
+
+	if (reverttimer_ == 1) {
+		e_scl = { 25.3f,25.3f,25.3f };
+		S_scl = m_Scale;
+		returnflag = false;
+	}
 }
 
 

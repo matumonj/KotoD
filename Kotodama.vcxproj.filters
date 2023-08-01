@@ -778,9 +778,6 @@
     <ClInclude Include="SourceCode\gamesystem\character\Ghost.h">
       <Filter>gamesystem\charactor\Ghost</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\gamesystem\character\FirstBoss.h">
-      <Filter>gamesystem\charactor\Boss\First</Filter>
-    </ClInclude>
     <ClInclude Include="SourceCode\gamesystem\character\InterBoss.h">
       <Filter>gamesystem\charactor\Boss\Base</Filter>
     </ClInclude>
@@ -1125,6 +1122,9 @@
     </ClInclude>
     <ClInclude Include="SourceCode\gamesystem\text\ClearText.h">
       <Filter>gamesystem\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\gamesystem\character\FirstBoss.h">
+      <Filter>gamesystem\charactor\Boss\First</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
