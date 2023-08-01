@@ -144,9 +144,7 @@ void EndRollActor::IntroUpdate(DebugCamera* camera) {
 	}
 }
 void EndRollActor::MainUpdate(DebugCamera* camera) {
-	
 	camerawork->DefUpda(camera);
-	
 }
 void EndRollActor::FinishUpdate(DebugCamera* camera) {
 	camerawork->DefUpda(camera);

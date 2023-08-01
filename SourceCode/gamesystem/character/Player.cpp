@@ -912,6 +912,7 @@ void Player::AwakeInit() {
 	m_ChargeType = POWER_NONE;
 	HungerGauge::GetInstance()->SetCatchCount(0);
 	HungerGauge::GetInstance()->SetNowHunger(0.0f);
+	HungerGauge::GetInstance()->SetAdditional(0.0f);
 	BulletDelete();
 	AnimationControl(AnimeName::IDLE, true, 1);
 }
