@@ -492,14 +492,18 @@ void SevenStageActor::WhoRead(const string& name) {
 	if (name == "sutopon") {
 		sutopon_color_ = { 1.0f,1.0f,1.0f,1.0f };
 		girl_color_ = { 0.5f,0.5f,0.5f,0.5f };
+		text_->ChangeColor({ 0.f,1.f,1.f,1.f });
 	} else if (name == "girl") {
-		girl_color_ = { 1.0f,1.0f,1.0f,1.0f };
+		girl_color_ = { 1.3f,1.3f,1.3f,1.0f };
 		sutopon_color_ = { 0.5f,0.5f,0.5f,0.5f };
+		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 	} else if (name == "boss") {
 		sutopon_color_ = { 0.5f,0.5f,0.5f,0.5f };
 		girl_color_ = { 0.5f,0.5f,0.5f,0.5f };
+		text_->ChangeColor({ 1.f,1.f,1.f,1.f });
 	} else if (name == "none") {
 		sutopon_color_ = { 0.0f,0.0f,0.0f,0.0f };
 		girl_color_ = { 0.0f,0.0f,0.0f,0.0f };
+		text_->ChangeColor({ 1.f,1.f,1.f,1.f });
 	}
 }
