@@ -289,7 +289,7 @@ void SevenStageActor::MainUpdate(DebugCamera* camera) {
 
 		if (camerawork->GetEndDeath()) {
 			sceneChanger_->ChangeStart();
-			SelectScene::GetIns()->ResetParama();
+			//SelectScene::GetIns()->ResetParama();
 			sceneChanger_->ChangeScene("ENDROLL", SceneChanger::NonReverse);
 			Audio::GetInstance()->StopWave(AUDIO_BATTLE2);
 		}

@@ -581,7 +581,7 @@ void SelectScene::StateManager() {
 	//debugよう
 	m_Scale[TITLE] = { 0.7025f,0.71f,0.75f };
 
-	//m_SelectState = SELECT_SECOND;
+	//m_SelectState = SELECT_LAS;
 	//クリア状況に応じてOBJの大きさだったりが違う
 	if (m_SelectState == SELECT_FIRST) {		//ここは牛乳のみ
 
