@@ -209,7 +209,7 @@ void FirstBoss::EffecttexDraw(DirectXCommon* dxCommon)
 void FirstBoss::Draw(DirectXCommon* dxCommon)
 {
 	IKETexture::PreDraw2(dxCommon, AlphaBlendType);
-	if (Display == true&&m_HP>0) {
+	if (Display == true&&m_HP>0&&_charstate!=CharaState::STATE_BIG) {
 		tex->Draw();
 	}
 	IKETexture::PostDraw();
@@ -629,13 +629,12 @@ void FirstBoss::Big()
 	Revert();
 
 	if (returnflag) { return; }
-	XMFLOAT3 s_scl = m_Scale;
 	bigtimer_ += 1.0f / 60;
 	Helper::GetInstance()->Clamp(bigtimer_, 0.0f, 1.0f);
 	m_Scale = {
-	Ease(In, Quart, bigtimer_, s_scl.x, e_scl.x),
-	Ease(In, Quart, bigtimer_, s_scl.y, e_scl.y),
-	Ease(In, Quart, bigtimer_, s_scl.z, e_scl.z),
+	Ease(In, Quart, bigtimer_, S_scl.x, e_scl.x),
+	Ease(In, Quart, bigtimer_, S_scl.y, e_scl.y),
+	Ease(In, Quart, bigtimer_, S_scl.z, e_scl.z),
 	};
 
 
@@ -674,6 +673,7 @@ void FirstBoss::Revert()
 
 	if (reverttimer_ == 1) {
 		e_scl = { 25.3f,25.3f,25.3f };
+		S_scl = m_Scale;
 		returnflag = false;
 	}
 }

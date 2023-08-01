@@ -256,6 +256,7 @@ private:
 	float nowrot_ = 0.f;
 
 	XMFLOAT3 e_scl{ 15.3f,15.3f,15.3f };
+	XMFLOAT3 S_scl = {};
 };
 
 
