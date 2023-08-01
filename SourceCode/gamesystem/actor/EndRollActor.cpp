@@ -124,6 +124,9 @@ void EndRollActor::IntroUpdate(DebugCamera* camera) {
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Voice_Clear.wav", VolumManager::GetInstance()->GetSEVolum() + 0.2f);
 	}
 
+	if (Input::GetInstance()->TriggerButton(Input::A)) {
+		m_Change = true;
+	}
 
 	if (m_Fin) {
 		m_Size = { Ease(In,Cubic,0.5f,m_Size.x,300.0f),
