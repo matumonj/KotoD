@@ -194,7 +194,7 @@ void SingleShot::Phase_Shot()
 			BulPos[i].y = 3.f;
 			BulPos[i].z = boss->GetPosition().z;
 		}
-		if (Player::GetInstance()->GetDamageInterVal() == 0 && Collision::CircleCollision(BulPos[i].x,BulPos[i].z,3.f, 
+		if (Player::GetInstance()->GetDamageInterVal() == 0 && Collision::CircleCollision(BulPos[i].x,BulPos[i].z,1.f, 
 			Player::GetInstance()->GetPosition().x, Player::GetInstance()->GetPosition().z,3.f)) {
 			Player::GetInstance()->PlayerHit(m_Position);
 			Player::GetInstance()->RecvDamage(Dam);

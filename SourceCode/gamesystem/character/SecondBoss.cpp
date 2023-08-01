@@ -141,7 +141,8 @@ void SecondBoss::Action() {
 	/*^^^^当たり判定^^^^*/
 	//弾とボスの当たり判定
 		vector<InterBullet*> _playerBulA = Player::GetInstance()->GetBulllet_attack();
-		if(SPosMoveEaseT<=0.f|| SPosMoveEaseT>=1.f)
+		if (m_Scale.x >= 0.9f || m_Scale.y >= 0.9f || m_Scale.z >= 0.9f)
+		//if(SPosMoveEaseT<=0.f|| SPosMoveEaseT>=1.f)
 		CollideBul(_playerBulA, Type::CIRCLE);
 	}
 	//OBJのステータスのセット
@@ -569,8 +570,8 @@ void SecondBoss::NormalAttak::Remove(XMFLOAT3& Pos, XMFLOAT3& Scl, bool Enf)
 	}
 
 	Scl.x = Easing::EaseOut(SPosMoveEaseT, 1.0f, 0.f);
-	Scl.y = Easing::EaseOut(SPosMoveEaseT, 1.0f, 0.f);
-	Scl.z = Easing::EaseOut(SPosMoveEaseT, 1.0f, 0.f);
+	Scl.y = Easing::EaseOut(SPosMoveEaseT-0.05f, 1.0f, 0.f);
+	Scl.z = Easing::EaseOut(SPosMoveEaseT-0.05f, 1.0f, 0.f);
 
 	Helper::GetInstance()->Clamp(SPosMoveEaseT, 0.f, 1.f);
 	Helper::GetInstance()->Clamp(Scl.x, 0.f, 1.0f);
