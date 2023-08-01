@@ -85,8 +85,10 @@ void FirstBoss::Action()
 
 
 	if (m_HP < half_hp_) {
+		returnflag = true;
+		half_hp_ = -100;
 		m_Magnification = 0.3f;
-		e_scl = { 25.3f,25.3f,25.3f };
+		nowrot_ = m_Rotation.x;
 		_charstate = CharaState::STATE_BIG;
 	}
 
@@ -624,7 +626,9 @@ void FirstBoss::FractionRockOn()
 
 void FirstBoss::Big()
 {
+	Revert();
 
+	if (returnflag) { return; }
 	XMFLOAT3 s_scl = m_Scale;
 	bigtimer_ += 1.0f / 60;
 	Helper::GetInstance()->Clamp(bigtimer_, 0.0f, 1.0f);
@@ -634,9 +638,43 @@ void FirstBoss::Big()
 	Ease(In, Quart, bigtimer_, s_scl.z, e_scl.z),
 	};
 
+
 	if (bigtimer_ == 1) {
-		half_hp_ = -100;
 		_charstate = CharaState::STATE_INTER;
+	}
+}
+
+void FirstBoss::Revert()
+{
+	if (!returnflag) { return; }
+
+	XMFLOAT3 s_scl = m_Scale;
+	reverttimer_ += 1.0f / 60;
+	Helper::GetInstance()->Clamp(reverttimer_, 0.0f, 1.0f);
+	m_Scale = {
+	Ease(In, Quart, reverttimer_, s_scl.x, e_scl.x),
+	Ease(In, Quart, reverttimer_, s_scl.y, e_scl.y),
+	Ease(In, Quart, reverttimer_, s_scl.z, e_scl.z),
+	};
+
+	float s_rot = nowrot_;
+	float e_rot = 0.f;
+	m_Rotation = {
+		Ease(In, Quart, reverttimer_, s_rot, e_rot),
+		0,
+		0,
+	};
+
+	XMFLOAT3 s_pos = m_Position;
+	m_Position = {
+		s_pos.x,
+		Ease(In, Quart, reverttimer_, s_pos.y, e_pos.y),
+		s_pos.z,
+	};
+
+	if (reverttimer_ == 1) {
+		e_scl = { 25.3f,25.3f,25.3f };
+		returnflag = false;
 	}
 }
 
