@@ -295,7 +295,6 @@ void FourthStageActor::IntroUpdate(DebugCamera* camera) {
 	} else if (m_AppTimer == 400) {
 		text_->ChangeColor({ 0.9f,0.6f,0.8f,1.f });
 		Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
-		text_->ChangeColor({ 1.0f,1.0f,1.0f,1.0f });
 		text_->SelectText(TextManager::TALK_THIRD_T);
 		girl_color_ = { 1.2f,1.2f,1.2f,1 };
 	} else if (m_AppTimer == 600) {
