@@ -157,7 +157,7 @@ void FiveStageActor::FrontDraw(DirectXCommon* dxCommon)
 	if (m_SceneState == SceneState::MainState && !camerawork->GetFeedEnd()) {
 		ui->Draw();
 	}
-	if (m_SceneState == SceneState::IntroState) {
+	if (m_SceneState == SceneState::IntroState || camerawork->GetFeedEnd()) {
 		SkipUI->Draw();
 	}
 	IKESprite::PostDraw();

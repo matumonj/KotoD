@@ -187,7 +187,7 @@ void FourthStageActor::BackDraw(DirectXCommon* dxCommon) {
 		ui->Draw();
 		IKESprite::PostDraw();
 	}
-	if (m_SceneState == SceneState::IntroState) {
+	if (m_SceneState == SceneState::IntroState || camerawork->GetFeedEnd()) {
 		IKESprite::PreDraw();
 		SkipUI->Draw();
 		IKESprite::PostDraw();

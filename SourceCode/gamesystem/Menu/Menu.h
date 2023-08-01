@@ -62,7 +62,6 @@ private:
 		BackScreen,
 		ConfirmButton,
 		SceneBackButton,
-		ReturnButton,
 		SutoponBar,
 		Confirm_FIRST,
 		Confirm_SECOND,
@@ -86,7 +85,6 @@ private:
 	enum {
 		CONFIRM = 0,
 		SCENEBACK,
-		RETURN,
 		MOVEMAX
 	};
 
@@ -97,7 +95,6 @@ private:
 	std::array<XMFLOAT2, MOVEMAX> buttonPos = {
 	XMFLOAT2(half_Width - 320.f,half_Height),
 	XMFLOAT2(half_Width + 320.f,half_Height),
-	XMFLOAT2(half_Width,half_Height + 180)
 	};
 
 	std::array<XMFLOAT2, FINALMAX> checkPos = {
