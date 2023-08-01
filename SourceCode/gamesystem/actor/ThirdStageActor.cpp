@@ -1,5 +1,5 @@
 ﻿#include "ThirdStageActor.h"
-#include"Easing.h"
+#include "Easing.h"
 #include "ParticleEmitter.h"
 #include "ImageManager.h"
 #include "BackObj.h"
@@ -175,7 +175,7 @@ void ThirdStageActor::FrontDraw(DirectXCommon* dxCommon) {
 	if (m_SceneState == SceneState::MainState && !camerawork->GetFeedEnd()) {
 		ui->Draw();
 	}
-	if (m_SceneState == SceneState::IntroState) {
+	if (m_SceneState == SceneState::IntroState||camerawork->GetFeedEnd()) {
 		SkipUI->Draw();
 	}
 	if (m_SceneState == SceneState::IntroState) {

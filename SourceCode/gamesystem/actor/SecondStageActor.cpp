@@ -159,31 +159,20 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 			Player::GetInstance()->MoveStop(false);
 			Player::GetInstance()->SetCanShot(true);
 			camerawork->SetCameraState(CAMERA_NORMAL);
-			//enemymanager->SkipInitialize();
-			//各クラス更新
-
 		}
 
 		if (PlayerDestroy()) {
 			Audio::GetInstance()->StopWave(AUDIO_BATTLE);
 			SceneSave::GetInstance()->SetLoseFlag(SeceneCategory::kSecondStage, true);
-			//SelectScene::GetIns()->ResetParama();
 			sceneChanger_->ChangeStart();
 			sceneChanger_->ChangeSceneLose("GAMEOVER");
 		}
 		//音楽の音量が変わる
 		Audio::GetInstance()->VolumChange(0, VolumManager::GetInstance()->GetBGMVolum());
 		VolumManager::GetInstance()->Update();
-
-		//enemymanager->BattleUpdate();
 		ColEnemy(enemymanager->GetBulEnemy());
 		loadobj->SecondUpdate();
 		ParticleEmitter::GetInstance()->Update();
-		if (input->TriggerKey(DIK_X)) {
-			Audio::GetInstance()->StopWave(AUDIO_BATTLE);
-			//SceneManager::GetInstance()->ChangeScene("SECONDSTAGE");
-
-		}
 		//カメラワークのセット
 		if (enemymanager->BossDestroy()) {
 			//フェード前
@@ -324,6 +313,7 @@ void SecondStageActor::FrontDraw(DirectXCommon* dxCommon) {
 		}
 		IKESprite::PreDraw();
 		messagewindow_->Draw();
+		SkipUI->Draw();
 		IKESprite::PostDraw();
 		menu->Draw();
 	} else {
@@ -331,13 +321,14 @@ void SecondStageActor::FrontDraw(DirectXCommon* dxCommon) {
 		if (camerawork->GetAppearEndF() && camerawork->GetCameraState() == CameraState::CAMERA_NORMAL) {
 			ui->Draw();
 		}
-		if (m_SceneState == SceneState::IntroState) {
-			SkipUI->Draw();
-		}
 		ClearText::GetInstance()->Draw();
+		if (camerawork->GetFeedEnd()) {
+			IKESprite::PreDraw();
+			SkipUI->Draw();
+			IKESprite::PostDraw();
+		}
 		menu->Draw();
 		sceneChanger_->Draw();
-
 		IKESprite::PostDraw();
 		camerawork->feedDraw();
 	}
