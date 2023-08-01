@@ -166,7 +166,7 @@ void LoadSceneActor::FinishUpdate(DebugCamera* camera) {
 
 	for (int i = text_L; i < BackScreen; i++) {
 
-		float rot = Ease(Out,Elastic, frame, 0, PI_360);
+		float rot = Ease(In,Quad, frame, 0, PI_360);
 		m_Sprites[i]->SetRotation(rot);
 	}
 }
