@@ -201,6 +201,9 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 				enemymanager->DeadUpdate();
 				camerawork->SetCameraState(CAMERA_BOSSDEAD_AFTER_SECOND);
 				Player::GetInstance()->DeathUpdateAfter(m_DeathTimer);
+				if (Input::GetInstance()->TriggerButton(Input::A)) {
+					camerawork->SetEndDeath(true);
+				}
 			}
 
 

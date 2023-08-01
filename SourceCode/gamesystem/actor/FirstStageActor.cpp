@@ -301,6 +301,9 @@ void FirstStageActor::MainUpdate(DebugCamera* camera) {
 			camerawork->SetCameraState(CAMERA_BOSSDEAD_AFTER_FIRST);
 			loadobj->AllClear();
 			Player::GetInstance()->DeathUpdateAfter(m_DeathTimer);
+			if (Input::GetInstance()->TriggerButton(Input::A)) {
+				camerawork->SetEndDeath(true);
+			}
 		}
 
 		if (camerawork->GetEndDeath()) {
