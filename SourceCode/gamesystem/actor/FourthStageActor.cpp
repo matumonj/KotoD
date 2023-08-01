@@ -187,7 +187,7 @@ void FourthStageActor::BackDraw(DirectXCommon* dxCommon) {
 		ui->Draw();
 		IKESprite::PostDraw();
 	}
-	if (m_SceneState == SceneState::IntroState) {
+	if (m_SceneState == SceneState::IntroState || camerawork->GetFeedEnd()) {
 		IKESprite::PreDraw();
 		SkipUI->Draw();
 		IKESprite::PostDraw();
@@ -420,6 +420,9 @@ void FourthStageActor::MainUpdate(DebugCamera* camera) {
 			enemymanager->DeadUpdate();
 			camerawork->SetCameraState(CAMERA_BOSSDEAD_AFTER_FOURTH);
 			Player::GetInstance()->DeathUpdateAfter(m_DeathTimer);
+			if (Input::GetInstance()->TriggerButton(Input::A)) {
+				camerawork->SetEndDeath(true);
+			}
 		}
 
 		if (camerawork->GetEndDeath()) {

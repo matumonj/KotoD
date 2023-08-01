@@ -74,6 +74,7 @@ private:
 	bool MovingCamera(const XMFLOAT3& s_eye, const XMFLOAT3& e_eye, const XMFLOAT3& s_target,const XMFLOAT3& e_target);
 
 private:
+	unique_ptr<IKESprite> SkipUI = nullptr;
 	//クラス
 	Input* input = Input::GetInstance();
 	unique_ptr<EnemyManager> enemymanager;

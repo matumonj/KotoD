@@ -28,7 +28,6 @@ void Menu::Initialize() {
 	sprites_[BackScreen] = CreateSprite(ImageManager::MENU_HOME, { half_Width,half_Height }, 30.0f);
 	sprites_[ConfirmButton] = CreateSprite(ImageManager::MENU_RULE, buttonPos[0], 30.0f);
 	sprites_[SceneBackButton] = CreateSprite(ImageManager::MENU_SCENECHANGE, buttonPos[1], 30.0f);
-	sprites_[ReturnButton] = CreateSprite(ImageManager::MENU_RESET, buttonPos[2], 30.0f);
 	sprites_[SutoponBar] = CreateSprite(ImageManager::MENU_FRAME, buttonPos[0], 30.0f);
 	sprites_[Confirm_FIRST] = CreateSprite(ImageManager::EXPLANATION_1, { half_Width,half_Height }, 15.0f);
 	sprites_[Confirm_SECOND] = CreateSprite(ImageManager::EXPLANATION_2, { half_Width,half_Height }, 15.0f);
@@ -85,8 +84,6 @@ void Menu::OpenUpdate() {
 	sprites_[(size_t)ConfirmButton].end_pos = buttonPos[0];
 	sprites_[(size_t)SceneBackButton].end_size = { 300.0f,150.0f };
 	sprites_[(size_t)SceneBackButton].end_pos = buttonPos[1];
-	sprites_[(size_t)ReturnButton].end_size = { 300.0f,150.0f };
-	sprites_[(size_t)ReturnButton].end_pos = buttonPos[2];
 	sprites_[(size_t)SutoponBar].end_size = { 300.0f,150.0f };
 	sprites_[(size_t)SutoponBar].end_pos = buttonPos[0];
 
@@ -129,11 +126,11 @@ void Menu::SelectUpdate() {
 		} else {
 			barIndex--;
 		}
-		if (barIndex > RETURN) {
+		if (barIndex > SCENEBACK) {
 			barIndex = CONFIRM;
 		}
 		if (barIndex < CONFIRM) {
-			barIndex = RETURN;
+			barIndex = SCENEBACK;
 		}
 		sprites_[(size_t)SutoponBar].start_pos = sprites_[(size_t)SutoponBar].pos;
 		sprites_[(size_t)SutoponBar].end_pos = buttonPos[barIndex];
@@ -145,7 +142,6 @@ void Menu::SelectUpdate() {
 		sprites_[(size_t)BackScreen].start_size = { 1280.0f,720.0f };
 		sprites_[(size_t)ConfirmButton].start_size = { 300.0f,150.0f };
 		sprites_[(size_t)SceneBackButton].start_size = { 300.0f,150.0f };
-		sprites_[(size_t)ReturnButton].start_size = { 300.0f,150.0f };
 		sprites_[(size_t)SutoponBar].start_size = { 300.0f,150.0f };
 		for (int i = BackScreen; i <= SutoponBar; i++) {
 			sprites_[i].kFrameMax = 15.0f;
@@ -170,22 +166,6 @@ void Menu::SelectUpdate() {
 			isOpen = true;
 			_state = State::CHECKOPENCLOSE;
 			barIndex = FINAL_OK;
-			break;
-		case RETURN:
-			sprites_[(size_t)BackScreen].start_size = { 1280.0f,720.0f };
-			sprites_[(size_t)ConfirmButton].start_size = { 300.0f,150.0f };
-			sprites_[(size_t)SceneBackButton].start_size = { 300.0f,150.0f };
-			sprites_[(size_t)ReturnButton].start_size = { 300.0f,150.0f };
-			sprites_[(size_t)SutoponBar].start_size = { 300.0f,150.0f };
-			for (int i = BackScreen; i <= SutoponBar; i++) {
-				sprites_[i].kFrameMax = 15.0f;
-				sprites_[i].easingFrame = 0.0f;
-				if (i >= ConfirmButton && i <= SutoponBar) {
-					sprites_[i].start_pos = sprites_[i].pos;
-				}
-			}
-			_state = State::CLOSE;
-			barIndex = CONFIRM;
 			break;
 		default:
 			break;
@@ -265,7 +245,6 @@ void Menu::CheckOpenCloseUpdate() {
 	sprites_[(size_t)Check_NO].isVisible = true;
 	sprites_[(size_t)Check_BAR].isVisible = true;
 	if (isOpen) {
-		sprites_[(size_t)ReturnButton].isVisible = false;
 		for (int i = Check_HOME; i <= Check_BAR; i++) {
 			sprites_[(size_t)i].isVisible = true;
 			sprites_[(size_t)i].start_size = { 0.0f,0.0f };
@@ -303,7 +282,6 @@ void Menu::CheckOpenCloseUpdate() {
 		}
 
 	} else {
-		sprites_[(size_t)ReturnButton].isVisible = true;
 		for (int i = Check_HOME; i <= Check_BAR; i++) {
 			sprites_[(size_t)i].isVisible = true;
 			sprites_[(size_t)i].end_size = { 0.0f,0.0f };

@@ -157,7 +157,7 @@ void FiveStageActor::FrontDraw(DirectXCommon* dxCommon)
 	if (m_SceneState == SceneState::MainState && !camerawork->GetFeedEnd()) {
 		ui->Draw();
 	}
-	if (m_SceneState == SceneState::IntroState) {
+	if (m_SceneState == SceneState::IntroState || camerawork->GetFeedEnd()) {
 		SkipUI->Draw();
 	}
 	IKESprite::PostDraw();
@@ -233,6 +233,9 @@ void FiveStageActor::MainUpdate(DebugCamera* camera) {
 			enemymanager->DeadUpdate();
 			camerawork->SetCameraState(CAMERA_BOSSDEAD_AFTER_FIVE);
 			Player::GetInstance()->DeathUpdateAfter(m_DeathTimer);
+			if (Input::GetInstance()->TriggerButton(Input::A)) {
+				camerawork->SetEndDeath(true);
+			}
 		}
 
 		if (camerawork->GetEndDeath()) {

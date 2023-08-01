@@ -183,7 +183,7 @@ void SevenStageActor::FrontDraw(DirectXCommon* dxCommon) {
 	if (m_SceneState == SceneState::MainState && !camerawork->GetFeedEnd() && camerawork->GetCameraState() == CAMERA_NORMAL) {
 		ui->Draw();
 	}
-	if (m_SceneState == SceneState::IntroState) {
+	if (m_SceneState == SceneState::IntroState || camerawork->GetFeedEnd()) {
 		SkipUI->Draw();
 	}
 	if ((m_SceneState == SceneState::IntroState) ||

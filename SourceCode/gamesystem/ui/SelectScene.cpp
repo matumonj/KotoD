@@ -621,7 +621,7 @@ void SelectScene::StateManager() {
 			temp[i] = TipsAct[i];
 		if (Helper::GetInstance()->All_OfF(temp, ObjNum)) {
 			m_BirthTimer++;
-			//m_Birth[SEVEN] = true;			//ラスボスの出現
+			m_Birth[SEVEN] = true;			//ラスボスの出現
 
 			if (m_BirthTimer == 150) {
 				m_Wide = true;

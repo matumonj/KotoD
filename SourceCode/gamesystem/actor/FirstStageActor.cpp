@@ -173,7 +173,7 @@ void FirstStageActor::FrontDraw(DirectXCommon* dxCommon) {
 			ui->Draw();
 		}
 	}
-	if (m_SceneState == SceneState::IntroState) {
+	if (m_SceneState == SceneState::IntroState || camerawork->GetFeedEnd()) {
 		SkipUI->Draw();
 	}
 	IKESprite::PostDraw();
@@ -301,6 +301,9 @@ void FirstStageActor::MainUpdate(DebugCamera* camera) {
 			camerawork->SetCameraState(CAMERA_BOSSDEAD_AFTER_FIRST);
 			loadobj->AllClear();
 			Player::GetInstance()->DeathUpdateAfter(m_DeathTimer);
+			if (Input::GetInstance()->TriggerButton(Input::A)) {
+				camerawork->SetEndDeath(true);
+			}
 		}
 
 		if (camerawork->GetEndDeath()) {

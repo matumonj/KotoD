@@ -557,6 +557,8 @@ void TutorialSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera
 
 	lightgroup->SetCircleShadowActive(0, false);
 	lightgroup->SetCircleShadowActive(1, false);
+
+	SkipUI = IKESprite::Create(ImageManager::SKIPUI, { 10,10 }, { 1.2f,1.2f,1.2f,1.f });
 }
 //更新
 void TutorialSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
@@ -683,6 +685,9 @@ void TutorialSceneActor::FrontDraw(DirectXCommon* dxCommon) {
 	if (messagewindow_->DisplayCheck()) {
 		text_->TestDraw(dxCommon);
 	}
+	IKESprite::PreDraw();
+	SkipUI->Draw();
+	IKESprite::PostDraw();
 	sceneChanger_->Draw();
 }
 //IMGuiの描画

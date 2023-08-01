@@ -40,6 +40,8 @@ void EndRollActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 	backScreen_->SetAddOffset(-0.0005f);
 
 	SceneSave::GetInstance()->SetEndRoll(true);
+
+	SkipUI = IKESprite::Create(ImageManager::SKIPUI, { 10,10 }, { 1.2f,1.2f,1.2f,1.f });
 }
 //XV
 void EndRollActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
@@ -79,6 +81,7 @@ void EndRollActor::Draw(DirectXCommon* dxCommon) {
 void EndRollActor::FrontDraw() {
 	IKESprite::PreDraw();
 	fin->Draw();
+	SkipUI->Draw();
 	IKESprite::PostDraw();
 	sceneChanger_->Draw();
 }
