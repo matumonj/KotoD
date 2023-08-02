@@ -189,6 +189,7 @@ private://各クラス
 	//CSV系
 	//弾の強さのリミット
 	vector<float>m_PowerLimit;
+	vector<float>m_SubLimit;
 
 	bool m_HitPlayer = false;
 

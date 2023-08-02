@@ -62,6 +62,11 @@ void Player::LoadCSV() {
 
 	m_PowerLimit.resize(LimitSize);
 	LoadCSV::LoadCsvParam_Float("Resources/csv/chara/player/player.csv", m_PowerLimit, "PowerLimit");
+
+	auto SubSize = static_cast<int>(std::any_cast<double>(LoadCSV::LoadCsvParam("Resources/csv/chara/player/player.csv", "SUB_NUM")));
+
+	m_SubLimit.resize(LimitSize);
+	LoadCSV::LoadCsvParam_Float("Resources/csv/chara/player/player.csv", m_SubLimit, "SubLimit");
 	for (auto i = 0; i < ABS_NUM; i++) {
 		m_Birthabs[i] = false;
 	}
@@ -508,13 +513,13 @@ void Player::Bullet_Management() {
 			//減る飢餓ゲージ量を決める
 			if (m_ChargeType != POWER_NONE) {
 				if (m_ChargeType == POWER_MIDDLE) {
-					m_LimitHunger = HungerGauge::GetInstance()->GetNowHunger() - m_PowerLimit[POWER_NONE];
+					m_LimitHunger = HungerGauge::GetInstance()->GetNowHunger() - m_SubLimit[POWER_NONE];
 				}
 				else if (m_ChargeType == POWER_STRONG) {
-					m_LimitHunger = HungerGauge::GetInstance()->GetNowHunger() - m_PowerLimit[POWER_MIDDLE];
+					m_LimitHunger = HungerGauge::GetInstance()->GetNowHunger() - m_SubLimit[POWER_MIDDLE];
 				}
 				else if (m_ChargeType == POWER_UNLIMITED) {
-					m_LimitHunger = HungerGauge::GetInstance()->GetNowHunger() - m_PowerLimit[POWER_STRONG];
+					m_LimitHunger = HungerGauge::GetInstance()->GetNowHunger() - m_SubLimit[POWER_STRONG];
 				}
 				m_Frame = {};
 				m_SubHunger = true;
