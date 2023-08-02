@@ -75,6 +75,10 @@ private:
 
 private:
 	unique_ptr<IKESprite> SkipUI = nullptr;
+	unique_ptr<IKESprite> setumei1 = nullptr;
+	unique_ptr<IKESprite> setumei2 = nullptr;
+	unique_ptr<IKESprite> setumei3 = nullptr;
+	unique_ptr<IKESprite> setumei4 = nullptr;
 	//クラス
 	Input* input = Input::GetInstance();
 	unique_ptr<EnemyManager> enemymanager;

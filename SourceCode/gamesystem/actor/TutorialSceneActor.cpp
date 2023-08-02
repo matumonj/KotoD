@@ -559,6 +559,14 @@ void TutorialSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera
 	lightgroup->SetCircleShadowActive(1, false);
 
 	SkipUI = IKESprite::Create(ImageManager::SKIPUI, { 10,10 }, { 1.2f,1.2f,1.2f,1.f });
+	setumei1 = IKESprite::Create(ImageManager::DESCRIPTION1, { 10,WinApp::window_height - 200 }, { 1.f,1.f,1.f,1.f });
+	setumei2 = IKESprite::Create(ImageManager::DESCRIPTION2, { 10,WinApp::window_height - 200 }, { 1.f,1.f,1.f,1.f });
+	setumei3 = IKESprite::Create(ImageManager::DESCRIPTION3, { 10,WinApp::window_height - 200 }, { 1.f,1.f,1.f,1.f });
+	setumei4 = IKESprite::Create(ImageManager::DESCRIPTION4, { 10,WinApp::window_height - 200 }, { 1.f,1.f,1.f,1.f });
+	setumei1->SetSize({ 400, 100 });
+	setumei2->SetSize({ 400, 100 });
+	setumei3->SetSize({ 400, 100 });
+	setumei4->SetSize({ 400, 100 });
 }
 //更新
 void TutorialSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
@@ -605,8 +613,6 @@ void TutorialSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Li
 	(this->*stateTable[static_cast<size_t>(nowstate_)])();
 	//各クラス更新
 	if (static_cast<int>(nowstate_) % 2 == 1) {
-		ui->SetNowNumber(number);
-		ui->SetumeiUpdate();
 		ui->Update();
 		Player::GetInstance()->Update();
 	}
@@ -687,6 +693,20 @@ void TutorialSceneActor::FrontDraw(DirectXCommon* dxCommon) {
 	}
 	IKESprite::PreDraw();
 	SkipUI->Draw();
+	if (static_cast<int>(nowstate_) % 2 == 1) {
+		if (number == 0) {
+			setumei1->Draw();
+		}
+		else if (number == 1) {
+			setumei2->Draw();
+		}
+		else if (number == 2) {
+			setumei3->Draw();
+		}
+		else if (number == 3) {
+			setumei4->Draw();
+		}
+	}
 	IKESprite::PostDraw();
 	sceneChanger_->Draw();
 }
