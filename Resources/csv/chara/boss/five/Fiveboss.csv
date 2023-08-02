@@ -1,7 +1,7 @@
 //BaseParam
 pos,0
 //HP
-hp,27
+hp,30
 //歩くスピード
 WalkSpeed,6
 //ガード続く時間
