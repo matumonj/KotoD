@@ -136,8 +136,6 @@ void FirstStageActor::Draw(DirectXCommon* dxCommon) {
 
 		dxCommon->PreDraw();
 		postEffect->Draw(dxCommon->GetCmdList());
-		/*	postEffect->ImGuiDraw();
-			camerawork->ImGuiDraw();*/
 		dxCommon->PostDraw();
 	} else {
 		postEffect->PreDrawScene(dxCommon->GetCmdList());
@@ -146,7 +144,6 @@ void FirstStageActor::Draw(DirectXCommon* dxCommon) {
 		dxCommon->PreDraw();
 		BackDraw(dxCommon);
 		FrontDraw(dxCommon);
-		//camerawork->ImGuiDraw();
 		dxCommon->PostDraw();
 	}
 }

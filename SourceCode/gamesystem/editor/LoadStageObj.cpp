@@ -165,12 +165,6 @@ void LoadStageObj::Draw(DirectXCommon* dxCommon) {
 }
 //ImGui
 void LoadStageObj::ImGuiDraw() {
-	//ゴースト
-	int num = GetGhostNumber();
-	ImGui::Begin("LoadObj");
-	ImGui::Text("Heal:%f", m_HealPower);
-	ImGui::End();
-	//m_EnemyManager->ImGuiDraw();
 }
 //当たり判定(ゴースト)
 void LoadStageObj::Collide() {

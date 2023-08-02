@@ -57,10 +57,10 @@ void HungerGauge::Update() {
 
 //ImGui
 void HungerGauge::ImGuiDraw() {
-	ImGui::Begin("Hunger");
-	ImGui::Text("NowHunger:%f", m_NowHunger);
-	ImGui::Text("Additional:%f", m_Additional);
-	ImGui::End();
+	//ImGui::Begin("Hunger");
+	//ImGui::Text("NowHunger:%f", m_NowHunger);
+	//ImGui::Text("Additional:%f", m_Additional);
+	//ImGui::End();
 }
 
 float HungerGauge::GetPercentage() {

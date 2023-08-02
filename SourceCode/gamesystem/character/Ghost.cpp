@@ -107,10 +107,10 @@ void Ghost::Draw(DirectXCommon* dxCommon) {
 }
 //ImGui描画
 void Ghost::ImGuiDraw() {
-	ImGui::Begin("Ghost");
-	ImGui::Text("Abso:%d", m_Absorption);
-	ImGui::Text("PosZ:%f", m_Position.z);
-	ImGui::End();
+	//ImGui::Begin("Ghost");
+	//ImGui::Text("ScaleX:%f", m_Scale.x);
+	//ImGui::Text("Timer:%f", m_SpawnTimer);
+	//ImGui::End();
 }
 
 //パーティクル
@@ -205,8 +205,10 @@ void Ghost::BirthGhost() {
 		m_SpawnTimer = 0;
 	}
 	//一定時間で生成される
-	if (m_ResPornTimer == 100) {
+	if (m_ResPornTimer == 21) {
 		m_Alive = true;
+	}
+	else if (m_ResPornTimer == 100) {
 		m_ResPornTimer = 0;
 		m_Scale = { 0.5f,0.5f,0.5f };
 	}
