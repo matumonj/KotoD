@@ -799,7 +799,7 @@ void SecondBoss::ChargeAttack::JumpAction(XMFLOAT3& Pos, XMFLOAT3& Rot)
 
 	if (JFrame >= 1.f)
 	{
-		if (Collision::CircleCollision(PPos.x, PPos.z, 2.f, Pos.x, Pos.z, 5.f) && Player::GetInstance()->GetDamageInterVal() == 0)
+		if (Collision::CircleCollision(PPos.x, PPos.z, 2.f, Pos.x, Pos.z, 7.f) && Player::GetInstance()->GetDamageInterVal() == 0)
 		{
 			Player::GetInstance()->RecvDamage(2.0f);
 		}
@@ -836,7 +836,7 @@ void SecondBoss::ChargeAttack::TexScling(XMFLOAT3& Rot)
 
 	for (auto i = 0; i < impacttex.size(); i++)
 	{
-		if (texScl[i].x > AddScling)texAlpha[i] -= 0.015f;
+		if (texScl[i].x > AddScling)texAlpha[i] -= 0.019f;
 	}
 
 	if (flagOff)_phase = Phase_Charge::END;

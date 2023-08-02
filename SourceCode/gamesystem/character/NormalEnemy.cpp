@@ -184,7 +184,7 @@ void NormalEnemy::RushAction()
 		//Rotation”½‰f
 		//if (randMove > 50) {
 		if(canRot)
-		m_Rotation.y = Easing::EaseOut(t, old * 50.f + 180.f, RotY * 50.f+180.f);
+		m_Rotation.y = Easing::EaseOut(t, old * 60.f + 180.f, RotY * 60.f+180.f);
 		if (t >= 1.f) {
 			canRot = false;
 			ret = false;
