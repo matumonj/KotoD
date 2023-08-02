@@ -117,8 +117,8 @@ void SmashShotAttack::Phase_Shot()
 
 	Helper::GetInstance()->FrameCheck(BulEaseCount[0], 0.015f);
 	BulPos[0].y += 0.5f;
-	BulPos[0].x = Ease(In, Quad, BulEaseCount[0], boss->GetPosition().x, boss->GetPosition().x + PosXVal[0]);
-	BulPos[0].z = Ease(In, Quad, BulEaseCount[0], boss->GetPosition().z, boss->GetPosition().z + PosZVal[0]);
+	BulPos[0].x =boss->GetPosition().x;
+	BulPos[0].z = boss->GetPosition().z;
 
 	for (auto i = 1; i < BulSize; i++)
 	{
