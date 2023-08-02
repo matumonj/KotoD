@@ -8,11 +8,11 @@ HP,5
 ///読み込むデータ数///
 POWER_NUM,3
 //一段回目の範囲(0.0f ～ 5.0)
-PowerLimit,5.0
+PowerLimit,10.0
 //二段階目の範囲(8.0f ～ 15.0f)
-PowerLimit,15.0
-//三段階目の範囲(15.0f ～　25.0f)
 PowerLimit,20.0
+//三段階目の範囲(15.0f ～　25.0f)
+PowerLimit,30.0
 //最後は25.0f～...
 
 ///減る量範囲の設定
@@ -20,9 +20,9 @@ PowerLimit,20.0
 ///読み込むデータ数///
 SUB_NUM,3
 //一段回目の減る量
-SubLimit,5.0
+SubLimit,7.0
 //二段階目の減る量
-SubLimit,15.0
+SubLimit,10.0
 //三段階目の減る量
-SubLimit,20.0
+SubLimit,15.0
 //最後は25.0
