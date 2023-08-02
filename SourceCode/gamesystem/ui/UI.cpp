@@ -170,27 +170,6 @@ void UI::Initialize() {
 		}
 	}
 
-	setumei[SETUMEI1] = CreateUi(ImageManager::DESCRIPTION1, m_setumeipos, { 200 * 2,50 * 2 }, { 1.f,1.f,1.f,1.f });
-	TexSetumei.emplace_back(std::move(sprites[SETUMEI1]));
-	TexSetumei[SETUMEI1].Tex = IKESprite::Create(ImageManager::DESCRIPTION1, { WinApp::window_width / 2,WinApp::window_height / 2 });
-	TexSetumei[SETUMEI1].Tex->SetAnchorPoint({ 0.5f,0.5f });
-
-	setumei[SETUMEI2] = CreateUi(ImageManager::DESCRIPTION2, m_setumeipos, { 200 * 2,50 * 2 }, { 1.f,1.f,1.f,1.f });
-	TexSetumei.emplace_back(std::move(sprites[SETUMEI2]));
-	TexSetumei[SETUMEI2].Tex = IKESprite::Create(ImageManager::DESCRIPTION2, { WinApp::window_width / 2,WinApp::window_height / 2 });
-	TexSetumei[SETUMEI2].Tex->SetAnchorPoint({ 0.5f,0.5f });
-
-	setumei[SETUMEI3] = CreateUi(ImageManager::DESCRIPTION3, m_setumeipos, { 200 * 2,50 * 2 }, { 1.f,1.f,1.f,1.f });
-	TexSetumei.emplace_back(std::move(sprites[SETUMEI3]));
-	TexSetumei[SETUMEI3].Tex = IKESprite::Create(ImageManager::DESCRIPTION3, { WinApp::window_width / 2,WinApp::window_height / 2 });
-	TexSetumei[SETUMEI3].Tex->SetAnchorPoint({ 0.5f,0.5f });
-
-	setumei[SETUMEI4] = CreateUi(ImageManager::DESCRIPTION4, m_setumeipos, { 200 * 2,50 * 2 }, { 1.f,1.f,1.f,1.f });
-	TexSetumei.emplace_back(std::move(sprites[SETUMEI4]));
-	TexSetumei[SETUMEI4].Tex = IKESprite::Create(ImageManager::DESCRIPTION4, { WinApp::window_width / 2,WinApp::window_height / 2 });
-	TexSetumei[SETUMEI4].Tex->SetAnchorPoint({ 0.5f,0.5f });
-
-
 	if (boss) {
 		bossHpOld = boss->GetHP();
 	}
@@ -235,9 +214,6 @@ void UI::Draw() {
 			continue;
 		}
 		TexList[i].Tex->Draw();
-	}
-	if (num < 4) {
-		SetumiDraw();
 	}
 	IKESprite::PostDraw();
 }
@@ -536,31 +512,5 @@ void UI::BossLife() {
 	}
 }
 
-void UI::SetumeiUpdate()
-{
-	for (int i = 0; i < TexSetumei.size(); i++) {
-		if (TexSetumei[i].Tex == nullptr)continue;
-		TexSetumei[i].Tex->SetPosition({ 210,WinApp::window_height / 2 + 200 });
-		TexSetumei[i].Tex->SetSize({ 400,100 });
-		TexSetumei[i].Tex->SetRotation(TexSetumei[i].Rotation);
-		TexSetumei[i].Tex->SetColor(TexSetumei[i].Color);
-	}
 
 
-}
-
-void UI::SetumiDraw()
-{
-	if (num == 0) {
-		TexSetumei[SETUMEI1].Tex->Draw();
-	}
-	else if (num == 1) {
-		TexSetumei[SETUMEI2].Tex->Draw();
-	}
-	else if (num == 2) {
-		TexSetumei[SETUMEI3].Tex->Draw();
-	}
-	else if (num == 3) {
-		TexSetumei[SETUMEI4].Tex->Draw();
-	}
-}

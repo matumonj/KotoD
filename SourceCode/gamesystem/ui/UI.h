@@ -64,18 +64,8 @@ private:
 		UiMax,
 	};
 
-	enum SetumeiNo {
-		SETUMEI1,
-		SETUMEI2,
-		SETUMEI3,
-		SETUMEI4,
-		MAX,
-	};
-
-
 	//スプライト
 	std::array<SpriteData, UiMax> sprites = {};
-	std::array<SpriteData, MAX> setumei = {};
 
 
 	XMFLOAT2 m_GaugePos = { 430,623.f };
@@ -153,10 +143,6 @@ private:
 	void PlayerGauge();
 	void BulletChange();
 	void BossLife();
-	public:
-		void SetNowNumber(int number) { this->num = number; }
-		void SetumeiUpdate();
-		void SetumiDraw();
 private:
 	int num = 5;
 };
