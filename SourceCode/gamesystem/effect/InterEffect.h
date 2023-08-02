@@ -19,6 +19,7 @@ public:
 	bool GetAlive() { return m_Alive; }
 
 	void SetPosition(const XMFLOAT3& position) { m_Position = position; }
+	void SetColor(const XMFLOAT4& Color) { m_Color = Color; }
 public:
 
 	//èâä˙âª
@@ -33,6 +34,7 @@ public:
 protected:
 	float DiviSpeed;
 	XMFLOAT3 m_Position = { 0.0f,0.0f,0.0f };
+	XMFLOAT4 m_Color = { 0.0f,0.0f,0.0f,0.0f };
 	bool m_Alive = false;
 
 	int m_AliveTimer = 0;
