@@ -48,7 +48,7 @@ void GameOverSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Li
 		sceneChanger_->ChangeStart();
 		if (input->TriggerButton(input->A)) {
 			SelectScene::GetIns()->ResetParama();
-			str = "TITLE";
+			str = "SELECT";
 			Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Over.wav", VolumManager::GetInstance()->GetSEVolum());
 		} else {
 			str = NextStageName();
