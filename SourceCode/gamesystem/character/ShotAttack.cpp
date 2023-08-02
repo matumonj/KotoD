@@ -333,6 +333,11 @@ void ShotAttack::Phase_End()
 	oldroty = boss->GetRotation().y;
 	//if (PhaseCount < 4) {
 	//if (RotEaseTime >= 1.f)
+
+	mt19937 mt{ std::random_device{}() };
+	uniform_int_distribution<int> l_RandRot(1, (int)boss->GetGhost().size() - 1);
+
+	TargetGhost = l_RandRot(mt);
 	_phase = NON;
 	//}
 
