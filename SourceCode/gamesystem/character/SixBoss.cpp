@@ -87,7 +87,7 @@ void SixBoss::CSVLoad() {
 void SixBoss::Action() {
 	//状態移行(charastateに合わせる)
 	if (m_HP > 0.0f) {
-		(this->*stateTable[_charaState])();
+		//(this->*stateTable[_charaState])();
 	}
 
 	/*^^^^当たり判定^^^^*/
