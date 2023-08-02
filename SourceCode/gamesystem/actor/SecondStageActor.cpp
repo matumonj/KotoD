@@ -82,14 +82,14 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 		return;
 	}
 
-	constexpr int IntervalTextC = 200;
+	constexpr int IntervalTextC = 150;
 	messagewindow_->DisplayCharacter(sutopon_color_);
 	if (_Tscne == TextScene::NON) {
 		sutopon_color_ = { 1.0f,1.0f,1.0f,1.0f };
 		girl_color_ = { 0.5f,0.5f,0.5f,0.5f };
 		textT++;
 		text_->SelectText(TextManager::Name_First::VIEWBOSS, kSkyBlue);
-		if (Input::GetInstance()->TriggerButton(Input::B) || textT > 1 * IntervalTextC) {
+		if ( textT > 1 * IntervalTextC) {
 			Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 			_Tscne = TextScene::TIEYOSHI_EXP;
 		}
@@ -98,7 +98,7 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 		girl_color_ = { 1.2f,1.2f,1.2f,1.f };
 		textT++;
 		text_->SelectText(TextManager::Name_First::SPEAKPLAYER1, kPink);
-		if (Input::GetInstance()->TriggerButton(Input::B) || textT > 2 * IntervalTextC) {
+		if (textT > 2 * IntervalTextC) {
 			Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 			_Tscne = TextScene::KILL_TIEYOSHI;
 		}
@@ -108,7 +108,7 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 
 		textT++;
 		text_->SelectText(TextManager::Name_First::SPEALPLAYER2, kSkyBlue);
-		if (Input::GetInstance()->TriggerButton(Input::B) || textT > 3 * IntervalTextC) {
+		if (textT > 3 * IntervalTextC) {
 			Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 			_Tscne = TextScene::LET_GO;
 		}
@@ -120,7 +120,7 @@ void SecondStageActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, Ligh
 		girl_color_ = { 1.2f,1.2f,1.2f,1.f };
 		textT++;
 		text_->SelectText(TextManager::Name_First::SPEALPLAYER3, kPink);
-		if (Input::GetInstance()->TriggerButton(Input::B) || textT > 4 * IntervalTextC) {
+		if (textT > 4 * IntervalTextC) {
 			Audio::GetInstance()->PlayWave("Resources/Sound/SE/Button_Text.wav", VolumManager::GetInstance()->GetSEVolum());
 
 			_Tscne = TextScene::ENDTEXT;
