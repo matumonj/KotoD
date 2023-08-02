@@ -93,6 +93,7 @@ void InterCD::BirthEffect() {
 	neweffect->SetPosition(m_Position);
 	neweffect->SetDiviSpeed(1.0f);
 	neweffect->SetLife(50);
+	neweffect->SetColor({ 1.0f, 0.0f, 0.0f, 1.0f });
 	effects.push_back(neweffect);
 }
 

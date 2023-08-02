@@ -133,6 +133,7 @@ void InterBoss::BirthEffect() {
 	neweffect = new BreakEffect();
 	neweffect->Initialize();
 	neweffect->SetPosition(m_Position);
+	neweffect->SetColor({ 1.0f, 0.0f, 0.0f, 1.0f });
 	//if (SceneName == "FIRSTSTAGE")
 	//	neweffect->SetPosition(EffectFirstPos);
 	if (m_HP <= 0.0f && m_Slow) {
