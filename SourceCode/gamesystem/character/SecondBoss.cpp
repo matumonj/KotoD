@@ -397,6 +397,7 @@ void SecondBoss::NormalAttak::ShakeAction(XMFLOAT3& Pos, XMFLOAT3& Rot)
 		//RotSpeed = 0.f;
 		RushMoveEaseT = 0.f;
 	}
+
 	XMVECTOR move = { 0.f,0.f, 0.1f, 0.0f };
 
 	XMMATRIX matRot = XMMatrixRotationY(XMConvertToRadians(Rot.y + 270.f));
@@ -408,8 +409,8 @@ void SecondBoss::NormalAttak::ShakeAction(XMFLOAT3& Pos, XMFLOAT3& Rot)
 	if (RotEaseTime >= 1.f) {
 
 		RotSpeed += 0.1f;
-		if (RotSpeed >= 6.0f && !shakeend) {
-			RemovePosEaseT += 0.05f;
+		if (RotSpeed >= 7.0f && !shakeend) {
+			RemovePosEaseT += 0.033f;
 			if (RemovePosEaseT >= 1.f) {
 				shakeend = true;
 			}
