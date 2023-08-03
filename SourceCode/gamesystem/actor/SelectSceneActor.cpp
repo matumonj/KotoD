@@ -69,7 +69,7 @@ void SelectSceneActor::Initialize(DirectXCommon* dxCommon, DebugCamera* camera, 
 //XV
 void SelectSceneActor::Update(DirectXCommon* dxCommon, DebugCamera* camera, LightGroup* lightgroup) {
 
-
+	SceneSave::GetInstance()->SetLoseReset();
 	const int IntervalTextC = 200;
 
 	Input* input = Input::GetInstance();

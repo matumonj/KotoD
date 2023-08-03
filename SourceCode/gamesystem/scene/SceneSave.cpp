@@ -32,6 +32,15 @@ void SceneSave::SetLoseFlag(SeceneCategory sceneCategory, const bool flag) {
 	m_StageLose[(size_t)sceneCategory] = flag;
 }
 
+void SceneSave::SetLoseReset()
+{
+	for(auto i=0;i<8;i++)
+	{
+		m_StageLose[i] = false;
+	}
+}
+
+
 bool SceneSave::GetLoseFlag(SeceneCategory sceneCategory) {
 	return m_StageLose[(size_t)sceneCategory];
 }

@@ -25,6 +25,7 @@ public:
 
 	void SetLoseFlag(SeceneCategory sceneCategory, const bool flag);
 
+	void SetLoseReset();
 	bool GetLoseFlag(SeceneCategory sceneCategory);
 
 	bool AllClear();
